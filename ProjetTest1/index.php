@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // Test 1
+        // Test 2 (Arnaud)
         ?>
     </body>
 </html>
