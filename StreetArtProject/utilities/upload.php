@@ -17,4 +17,3 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
         echo "Mauvais type de fichier ";
     }
 }
-
