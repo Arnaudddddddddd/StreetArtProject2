@@ -12,7 +12,11 @@ function logIn($dbh){
 
 function logOut(){
     $_SESSION['loggedIn']=false;
+
     $_SESSION['login'] = null;
+
+    $_GET['page']='welcome';
+
     session_unset();
     session_destroy();
 }
