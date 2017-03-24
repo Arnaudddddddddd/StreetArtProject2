@@ -17,5 +17,5 @@ if ($type == 2) {
 else
   echo "mauvais type de fichier ";
 }
-var_dump($_POST['login']);
+
  

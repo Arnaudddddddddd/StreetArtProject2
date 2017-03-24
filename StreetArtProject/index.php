@@ -6,6 +6,7 @@ session_start();
 if (!isset($_SESSION['initiated'])) {
     session_regenerate_id();
     $_SESSION['initiated'] = true;
+    $_SESSION['login'] = null;
 }
 
 
@@ -14,6 +15,7 @@ require('utilities/logInOut.php');
 require('database/database.php');
 require('utilities/utilisateur.php');
 $dbh = Database::connect();
+
 
 //traitement des contenus de formulaires
 if (isset($_GET["todo"])) {
@@ -27,7 +29,7 @@ if (isset($_GET["todo"])) {
     }
 }
 require('utilities/utils.php');
-var_dump($_POST['login']);
+
 $prewlcm = TRUE;
 
 //Verification de la validité de GET

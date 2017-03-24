@@ -6,11 +6,13 @@ function logIn($dbh){
     $test2 = Utilisateur::testerMdp($dbh,$_POST['login'],$_POST['mdp']);}
     if($test1==true && $test2==true){
         $_SESSION['loggedIn']=true;
+        $_SESSION['login'] = $_POST['login'];
     }
 }
 
 function logOut(){
     $_SESSION['loggedIn']=false;
+    $_SESSION['login'] = null;
     session_unset();
     session_destroy();
 }
