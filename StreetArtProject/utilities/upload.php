@@ -1,5 +1,5 @@
 <?php
-
+ //print_r($_FILES);
 // ex pour une image jpg
 if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier']['tmp_name'])) {
 // Le fichier a bien été téléchargé
