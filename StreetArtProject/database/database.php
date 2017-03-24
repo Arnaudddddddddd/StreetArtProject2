@@ -1,7 +1,7 @@
 <?php
 class Database {
     public static function connect() {
-        $dsn = 'mysql:dbname=TD3Modal;host=127.0.0.1';
+        $dsn = 'mysql:dbname=DBStreetArt;host=127.0.0.1';
         $user = 'root';
         $password = '';
         $dbh = null;
