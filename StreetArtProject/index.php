@@ -27,13 +27,13 @@ if (isset($_GET["todo"])) {
     }
 }
 require('utilities/utils.php');
-
+var_dump($_POST['login']);
 $prewlcm = TRUE;
 
 //Verification de la validité de GET
 if (!isset($_GET['page'])) {
     require('content/content_prewelcome.php');
-    $prewlcm = FALSE;
+    $prewlcm = FALSE; // Mettre cette variable à True pour travailler sans la page de pré-accueil
     $_GET['page'] = 'welcome';
 }
 
