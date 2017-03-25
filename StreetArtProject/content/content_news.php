@@ -1,14 +1,11 @@
 <h2>C'est le code PHP de la page des news</h2>
 <p>j'espère que ça marche<p/>
 
-<h2>C'est le code PHP de la page des news</h2>
-<p>j'espère que ça marche<p/>
-
 <!DOCTYPE html>
 <html>
   <head>
     <style>
-      #map {
+       #map {
         height: 400px;
         width: 100%;
        }
@@ -19,9 +16,9 @@
     <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        var uluru = {lat: 48.858, lng: 2.35};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 12,
           center: uluru
         });
         var marker = new google.maps.Marker({
@@ -35,6 +32,3 @@
     </script>
   </body>
 </html>
-
-
-
