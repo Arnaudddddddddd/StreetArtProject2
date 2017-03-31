@@ -9,8 +9,6 @@ if (!isset($_SESSION['initiated'])) {
     $_SESSION['login'] = null;
 }
 
-echo exec('whoami');
-
 require('utilities/printForms.php');
 require('utilities/logInOut.php');
 require('database/database.php');
