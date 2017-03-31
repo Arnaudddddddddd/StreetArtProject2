@@ -8,7 +8,7 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
     echo $larg . " " . $haut . " " . $type . " " . $attr;
 // JPEG => type=2
     if ($type == 2) {
-        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Users/arnaudstiegler/Desktop/imagePHP/' . $_POST['titre'])) {
+        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '../images/' . $_POST['titre'].'.jpg')) {
             echo "Copie réussie";
         } else {
             echo "Echec de la copie";

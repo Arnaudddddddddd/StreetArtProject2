@@ -6,7 +6,7 @@
    <label for="titre">Titre:</label>
    <input id="titre" type="text" name="titre" required="titre"/></div>
    <br>
-   <input type="submit" value="envoyer" />
+   <input type="submit" value="Envoyer" />
 </form>
    
     

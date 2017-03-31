@@ -9,6 +9,7 @@ if (!isset($_SESSION['initiated'])) {
     $_SESSION['login'] = null;
 }
 
+echo exec('whoami');
 
 require('utilities/printForms.php');
 require('utilities/logInOut.php');
@@ -67,7 +68,6 @@ if ($prewlcm) {
                 </div>
 END;
 
-// Problème pour inscription,désinscription et changement de mot de passe car ce n'est pas dans content
     if ($askedPage == 'changePassword') {
         require("formulaire/changePassword.php");
     } else {
@@ -83,7 +83,6 @@ END;
     }
     echo "</div>";
 }
-
 
 $dbh = null;
 
