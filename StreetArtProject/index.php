@@ -13,6 +13,7 @@ require('utilities/printForms.php');
 require('utilities/logInOut.php');
 require('database/database.php');
 require('utilities/utilisateur.php');
+require('utilities/image.php');
 $dbh = Database::connect();
 
 
