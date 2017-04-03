@@ -23,7 +23,10 @@ $page_list = array(
         "menutitle" => "Soumettre"),
     array("name" => "deleteUser",
         "title" => "Se désinscrire",
-        "menutitle" => "Se désinscrire"));
+        "menutitle" => "Se désinscrire"),
+    array("name" => "mesImages",
+        "title" => "Mes images",
+        "menutitle" => "Mes images"));
 
 function checkPage($askedPage) {
     $boolean = false;
@@ -68,10 +71,10 @@ CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
     foreach ($page_list as $page) {
-        if ($page['title'] == $pageTitle and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image") {
+        if ($page['title'] == $pageTitle and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Mes images") {
             echo '<li class="active"><a href="index.php?page=' . $page['name'] . '">' . $page['menutitle'] . '</a></li>';
         }
-        if ($page['title'] != $pageTitle and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire" and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image") {
+        if ($page['title'] != $pageTitle and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire" and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Mes images") {
             echo '<li><a href="index.php?page=' . $page['name'] . '">' . $page["menutitle"] . '</a></li>';
         }
 
@@ -87,6 +90,12 @@ CHAINE_DE_FIN;
             }
             if ($page['title'] == "Changer le mot de passe" and $pageTitle != "Changer le mot de passe") {
                 echo '<li><a href="index.php?page=changePassword">' . $page['menutitle'] . '</a></li>';
+            }
+            if ($page['title'] == "Mes images" and $pageTitle == "Mes images") {
+                echo '<li class="active"><a href="index.php?page=mesImages">' . $page['menutitle'] . '</a></li>';
+            }
+            if ($page['title'] == "Mes images" and $pageTitle != "Mes images") {
+                echo '<li><a href="index.php?page=mesImages">' . $page['menutitle'] . '</a></li>';
             }
             if ($page['title'] == "Soumettre une image" and $pageTitle == "Soumettre une image") {
                 echo '<li class="active"><a href="index.php?page=submit">' . $page['menutitle'] . '</a></li>';
