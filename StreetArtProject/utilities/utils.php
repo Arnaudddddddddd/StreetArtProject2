@@ -146,10 +146,27 @@ function generateHTMLHeader($title, $style) {
         <meta name="description" content="Descriptif court"/>
         <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="js/code.js"></script>
+        <script src="js/perso.js"></script>
         <title>$title</title>
         <!-- CSS Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="perso.css" />
         <link href="css/bootstrap.css" rel="stylesheet">
-
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+         height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
         <!-- CSS Perso -->
         <link href="css/perso.css" rel="stylesheet">
     </head>

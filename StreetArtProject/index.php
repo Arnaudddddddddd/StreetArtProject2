@@ -9,6 +9,7 @@ if (!isset($_SESSION['initiated'])) {
     $_SESSION['login'] = null;
 }
 
+require('phpsqlajax_dbinfo.php');
 require('utilities/printForms.php');
 require('utilities/logInOut.php');
 require('database/database.php');

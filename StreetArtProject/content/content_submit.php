@@ -43,11 +43,45 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 if (!$form_values_valid) {
     echo <<<CHAINE_DE_FIN
 
-<!DOCTYPE html>   
-   <html>
-
+   
+<div class="container">
+  <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>          
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" placeholder="Adresse">
+                </div>
+                <button class="btn btn-danger" id="btn-geocode">Récupérer les coordonnées</button>
+                <button class="btn btn-success"  id="btn-geoloc">Me géolocaliser</button>
+            </form>
+            <br><br>
+  <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>      
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude" placeholder="latitude">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" placeholder="longitude">
+                </div>
+                
+            </form>
+            <br>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2" id="map-canvas" style="height:400px"></div>
+            </div>
+        </div>        
 </form>     
-<form action="index.php?page=submit" method="post" enctype="multipart/form-data">
+<form name="submitForm" action="index.php?page=submit" method="post" enctype="multipart/form-data">
  <p>
   <label for="id">Id:</label>
   <input id="id" type="int" required name="id">
