@@ -146,10 +146,17 @@ function generateHTMLHeader($title, $style) {
         <meta name="description" content="Descriptif court"/>
         <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="js/code.js"></script>
-        <script src="js/perso.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/perso.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ5Dt9EU5yi6HzVkzsRU-W3RHbZDUKJCA&signed_in=true&callback=initMap">
+        </script>
         <title>$title</title>
         <!-- CSS Bootstrap -->
-        <link rel="stylesheet" type="text/css" href="perso.css" />
+        <link  href="css/perso.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/perso.css" />
         <link href="css/bootstrap.css" rel="stylesheet">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>

@@ -4,7 +4,7 @@
 $form_values_valid = false;
 if (isset($_POST["id"]) && $_POST["id"] != "" &&
         isset($_POST["nom"]) && $_POST["nom"] != "" &&
-        isset($_POST["adresse"]) && $_POST["adresse"] != "" &&
+        isset($_POST["subAdresse"]) && $_POST["subAdresse"] != "" &&
         isset($_POST["lat"]) && $_POST["lat"] != "" &&
         isset($_POST["lng"]) && $_POST["lng"] != "") {
     // code de traitement    
@@ -12,7 +12,7 @@ if (isset($_POST["id"]) && $_POST["id"] != "" &&
     $test = Image::getImage($dbh, $_POST['id']);
     var_dump($test);
     if ($test == null) {
-        $verif = Image::insererImage($dbh, $_POST['id'], $_POST['nom'], $_POST['adresse'], $_POST['lat'], $_POST['lng'], 'style.css');
+        $verif = Image::insererImage($dbh, $_POST['id'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], 'style.css');
         
         if ($verif) {
             $form_values_valid = true;
@@ -43,45 +43,10 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 if (!$form_values_valid) {
     echo <<<CHAINE_DE_FIN
 
-   
-<div class="container">
-  <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-1"></div>
-                <div class="col-md-1"></div>          
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="adresse">Adresse</label>
-                    <input type="text" class="form-control" id="adresse" placeholder="Adresse">
-                </div>
-                <button class="btn btn-danger" id="btn-geocode">Récupérer les coordonnées</button>
-                <button class="btn btn-success"  id="btn-geoloc">Me géolocaliser</button>
-            </form>
-            <br><br>
-  <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-1"></div>      
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input type="text" class="form-control" id="latitude" placeholder="latitude">
-                </div>
-                <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input type="text" class="form-control" id="longitude" placeholder="longitude">
-                </div>
-                
-            </form>
-            <br>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2" id="map-canvas" style="height:400px"></div>
-            </div>
-        </div>        
-</form>     
-<form name="submitForm" action="index.php?page=submit" method="post" enctype="multipart/form-data">
+<table> 
+<tr> 
+<td>        
+<form style="width: 300px" action="index.php?page=submit" method="post" enctype="multipart/form-data">
  <p>
   <label for="id">Id:</label>
   <input id="id" type="int" required name="id">
@@ -93,8 +58,8 @@ if (!$form_values_valid) {
  </p>
    
   <p>
-  <label for="adresse">Adresse:</label>
-  <input id="adresse" type="text" required name="adresse" >
+  <label for="subAdresse">Adresse:</label>
+  <input id="subAdresse" type="text" required name="subAdresse" >
    </p>
    
   <p>
@@ -111,6 +76,45 @@ if (!$form_values_valid) {
   <br>
   <input type="submit" value="Soumettre">
 </form>
+</td>
+<td>
+    <div>Cellule du milieu</div>
+</td>
+<td>
+    <div>Cellule du milieu</div>
+</td>        
+<td>
+ <div class="container">
+            <br><br>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" placeholder="Adresse">
+                </div>
+                <button class="btn btn-danger" id="btn-geocode">Récupérer les coordonnées</button>
+                <button class="btn btn-success"  id="btn-geoloc">Me géolocaliser</button>
+            </form>
+            <br><br>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude" placeholder="latitude">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" placeholder="longitude">
+                </div>
+                <button class="btn btn-info" id="btn-carte">Afficher sur la carte</button>
+            </form>
+            <br>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2" id="map-canvas" style="height:400px"></div>
+            </div>
+        </div>   
+</td>    
+</tr> 
+</table>      
+
     
 </html>
     
