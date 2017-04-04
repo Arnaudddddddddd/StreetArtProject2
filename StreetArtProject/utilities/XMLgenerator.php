@@ -1,4 +1,5 @@
 <?php
+
 require("phpsqlajax_dbinfo.php");
 
 function parseToXML($htmlStr)
@@ -50,4 +51,3 @@ while ($row = @mysql_fetch_assoc($result)){
 // End XML file
 echo '</markers>';
 
-?>

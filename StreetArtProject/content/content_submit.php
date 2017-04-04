@@ -1,9 +1,10 @@
 <?php
 
-
+$_POST['utilisateur']=$_SESSION['login'];
 $form_values_valid = false;
 if (isset($_POST["id"]) && $_POST["id"] != "" &&
         isset($_POST["nom"]) && $_POST["nom"] != "" &&
+        isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
         isset($_POST["subAdresse"]) && $_POST["subAdresse"] != "" &&
         isset($_POST["lat"]) && $_POST["lat"] != "" &&
         isset($_POST["lng"]) && $_POST["lng"] != "") {
@@ -12,7 +13,7 @@ if (isset($_POST["id"]) && $_POST["id"] != "" &&
     $test = Image::getImage($dbh, $_POST['id']);
     var_dump($test);
     if ($test == null) {
-        $verif = Image::insererImage($dbh, $_POST['id'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], 'style.css');
+        $verif = Image::insererImage($dbh, $_POST['id'],$_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], 'style.css');
         
         if ($verif) {
             $form_values_valid = true;
@@ -40,7 +41,7 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
     }
 }
 
-if (!$form_values_valid) {
+if (!$form_values_valid) {    
     echo <<<CHAINE_DE_FIN
 
 <table> 

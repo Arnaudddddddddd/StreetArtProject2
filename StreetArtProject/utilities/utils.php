@@ -2,83 +2,37 @@
 
 require_once 'printForms.php';
 
-$page_inout_list = array(
-    array("name" => "register",
-        "title" => "S'inscrire",
-        "menutitle" => "S'inscrire",
-        "category" => "Inout"),
-    array("name" => "signin",
-        "title" => "S'identifier",
-        "menutitle" => "S'identifier",
-        "category" => "Inout"),
-    array("name" => "deleteUser",
-        "title" => "Se désinscrire",
-        "menutitle" => "Se désinscrire",
-        "category" => "Inout"),
-    array("name" => "deconnect",
-        "title" => "Se déconnecter",
-        "menutitle" => "Se déconnecter",
-        "category" => "Inout"));
-
 $page_list = array(
-    array(
-        "name" => "welcome",
+    array("name" => "welcome",
         "title" => "Accueil de notre site",
-        "menutitle" => "Accueil",
-        "category" => "Menu"),
-    array(
-        "name" => "contacts",
+        "menutitle" => "Accueil"),
+    array("name" => "contacts",
         "title" => "Qui sommes-nous ?",
-        "menutitle" => "Nous contacter",
-        "category" => "Menu"),
+        "menutitle" => "Nous contacter"),
     array("name" => "news",
         "title" => "Dernières nouvelles",
-        "menutitle" => "Les dernières nouvelles",
-        "category" => "Menu"),
+        "menutitle" => "Les dernières nouvelles"),
     array("name" => "changePassword",
         "title" => "Changer le mot de passe",
-        "menutitle" => "Changer le mot de passe",
-        "category" => "Menu"),
+        "menutitle" => "Changer le mot de passe"),
     array("name" => "submit",
         "title" => "Soumettre une image",
-        "menutitle" => "Soumettre",
-        "category" => "Menu"),
+        "menutitle" => "Soumettre"),
     array("name" => "register",
         "title" => "S'inscrire",
-        "menutitle" => "S'inscrire",
-        "category" => "Inout"),
+        "menutitle" => "S'inscrire"),
     array("name" => "signin",
         "title" => "S'identifier",
-        "menutitle" => "S'identifier",
-        "category" => "Inout"),
+        "menutitle" => "S'identifier"),
     array("name" => "deleteUser",
         "title" => "Se désinscrire",
-        "menutitle" => "Se désinscrire",
-        "category" => "Inout"),
+        "menutitle" => "Se désinscrire"),
+    array("name" => "mesImages",
+        "title" => "Mes images",
+        "menutitle" => "Mes images"),
     array("name" => "deconnect",
         "title" => "Se déconnecter",
-        "menutitle" => "Se déconnecter",
-        "category" => "Inout"));
-
-function checkPageInout($askedPageInout) {
-    $boolean = false;
-    global $page_inout_list;
-    foreach ($page_inout_list as $page) {
-        if ($page['name'] == $askedPageInout) {
-            $boolean = true;
-        }
-    }
-    return $boolean;
-}
-
-function getPageTitleInout($nom) {
-    global $page_inout_list;
-    foreach ($page_inout_list as $page) {
-        if ($page['name'] == $nom) {
-            return $page['title'];
-        }
-    }
-}
+        "menutitle" => "Se déconnecter"));
 
 function checkPage($askedPage) {
     $boolean = false;
@@ -122,6 +76,7 @@ CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
     foreach ($page_list as $page) {
+
         if (isset($_SESSION["loggedIn"]) and $_SESSION["loggedIn"]) {
             if ($page['title'] == "Se désinscrire" and $pageTitle == "Se désinscrire") {
                 echo '<li class="active"><a href="index.php?page=deleteUser">' . $page['menutitle'] . '</a></li>';
@@ -134,6 +89,12 @@ CHAINE_DE_FIN;
             }
             if ($page['title'] == "Changer le mot de passe" and $pageTitle != "Changer le mot de passe") {
                 echo '<li><a href="index.php?page=changePassword">' . $page['menutitle'] . '</a></li>';
+            }
+            if ($page['title'] == "Mes images" and $pageTitle == "Mes images") {
+                echo '<li class="active"><a href="index.php?page=mesImages">' . $page['menutitle'] . '</a></li>';
+            }
+            if ($page['title'] == "Mes images" and $pageTitle != "Mes images") {
+                echo '<li><a href="index.php?page=mesImages">' . $page['menutitle'] . '</a></li>';
             }
             if ($page['title'] == "Soumettre une image" and $pageTitle == "Soumettre une image") {
                 echo '<li class="active"><a href="index.php?page=submit">' . $page['menutitle'] . '</a></li>';
@@ -201,15 +162,15 @@ CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
     foreach ($page_list as $page) {
-        if ($page['title'] == $pageTitle and $page['title'] != "S'identifier" and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Se déconnecter") {
-            echo '<li class="active"><a href="index.php?page=' . $page['name'] . '">' . $page['menutitle'] . '</a></li>';
-        }
-        if ($page['title'] != $pageTitle and $page['title'] != "S'identifier" and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire" and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Se déconnecter") {
-            echo '<li><a href="index.php?page=' . $page['name'] . '">' . $page["menutitle"] . '</a></li>';
+        if ($page['title'] != "Mes images" and $page['title'] != "S'identifier" and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Se déconnecter") {
+            if ($page['title'] == $pageTitle) {
+                echo '<li class="active"><a href="index.php?page=' . $page['name'] . '">' . $page['menutitle'] . '</a></li>';
+            }
+            if ($page['title'] != $pageTitle) {
+                echo '<li><a href="index.php?page=' . $page['name'] . '">' . $page["menutitle"] . '</a></li>';
+            }
         }
     }
-
-
     echo <<<CHAINE_DE_FIN
         </ul>
     </div><!-- /.navbar-collapse -->
