@@ -1,4 +1,3 @@
-
 <?php
 
 $form_values_valid = false;
@@ -26,6 +25,10 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     // si le traitement réussit, on passe $form_value_valid à true
 
     $dbh = null;
+}
+
+if($form_values_valid){
+    echo "Nous avons bien enregistré votre compte. Bienvenue !!";
 }
 
 if (!$form_values_valid) {
