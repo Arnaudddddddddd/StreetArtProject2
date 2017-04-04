@@ -51,14 +51,13 @@ class Image {
 //    }   
 // On récupère tout le contenu de la table jeux_video
 $reponse = $dbh->query("SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'");
-
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch()){
-    echo $donnees['nom'];
+    $array[]=$donnees['nom'];
 }
 
 $reponse->closeCursor(); // Termine le traitement de la requête
-    
+return $array;    
     }
     
     

@@ -1,4 +1,5 @@
 <?php
+
 echo <<<END
 </div>
     <div id="map"></div>
