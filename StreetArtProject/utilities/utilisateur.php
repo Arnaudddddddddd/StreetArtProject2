@@ -50,7 +50,3 @@ class Utilisateur {
         return $sth->rowCount()>0;
     }
 }
-
-?>
-
-

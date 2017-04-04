@@ -21,8 +21,6 @@ CHAINE_DE_FIN;
 
 function printLogoutForm(){
      echo <<<CHAINE_DE_FIN
-
-<body>
   <form class="form-inline" action="index.php?todo=logout" method="post" >
     <button type="submit" class="btn btn-default">Se déconnecter</button>
   </form>

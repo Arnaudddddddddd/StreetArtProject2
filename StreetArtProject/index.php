@@ -15,8 +15,9 @@ require('utilities/logInOut.php');
 require('database/database.php');
 require('utilities/utilisateur.php');
 require('utilities/image.php');
-$dbh = Database::connect();
+require('utilities/utils.php');
 
+$dbh = Database::connect();
 
 //traitement des contenus de formulaires
 if (isset($_GET["todo"])) {
@@ -29,45 +30,44 @@ if (isset($_GET["todo"])) {
         logOut($dbh);
     }
 }
-require('utilities/utils.php');
 
+//Verification de la nécessité d'afficher la page de préaccueil
 $prewlcm = TRUE;
-
-//Verification de la validité de GET
 if (!isset($_GET['page'])) {
     require('content/content_prewelcome.php');
     $prewlcm = FALSE; // Mettre cette variable à True pour travailler sans la page de pré-accueil
     $_GET['page'] = 'welcome';
 }
 
-$askedPage = $_GET['page'];
-
 //Verification que la page est bien autorisée: utilities/utils.php/checkPage
+$askedPage = $_GET['page'];
 $authorized = checkPage($askedPage);
-
 if ($authorized) {
     $pageTitle = getPageTitle($askedPage);
 } else {
     $askedPage = 'erreur';
     $pageTitle = "erreur";
 }
+
+//Génération du Header de la page
 generateHTMLHeader($pageTitle, "style.css");
 
+//Affichage du contenu de la page
 if ($prewlcm) {
     // affichage de formulaires
-    if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
+    /*if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
         printLogoutForm();
     } else {
         printLoginForm($askedPage);
-    }
-    generateMenu();
+    }*/
+    generateMenuConnexion($askedPage);
+    generateMenuGeneral();
     echo<<<END
             <div id="content">
                 <div>
                     <h1>$pageTitle</h1>
                 </div>
 END;
-
     if ($askedPage == 'changePassword') {
         require("formulaire/changePassword.php");
     } else {
@@ -86,4 +86,5 @@ END;
 
 $dbh = null;
 
+//Génération de la fin de page
 generateHTMLFooter();
