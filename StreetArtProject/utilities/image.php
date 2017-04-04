@@ -27,21 +27,7 @@ class Image {
     $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
     $sth->execute();
     $picture = $sth->fetch();
-    $sth->closeCursor();
-    if($sth->rowCount()>0){
-        return $picture;
-    }
-    else{
-        return null;
-    }
-    }
-    public static function getImageUtilisateur($dbh,$utilisateur){
-    $query = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
-    $sth = $dbh->prepare($query);
-    $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
-    $sth->execute();
-    $picture = $sth->fetch();
-    $sth->closeCursor();
+    
     if($sth->rowCount()>0){
         return $picture;
     }
@@ -50,4 +36,32 @@ class Image {
     }
     }
     
+    public static function getImageUtilisateur($dbh,$utilisateur){
+//    $query = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
+//    $sth = $dbh->prepare($query);
+//    $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
+//    $sth->execute();
+//    $picture = $sth->fetch();
+//    $sth->closeCursor();
+//    if($sth->rowCount()>0){
+//        return $picture;
+//    }
+//    else{
+//        return null;
+//    }   
+// On récupère tout le contenu de la table jeux_video
+$reponse = $dbh->query("SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'");
+
+// On affiche chaque entrée une à une
+while ($donnees = $reponse->fetch()){
+    echo $donnees['nom'];
 }
+
+$reponse->closeCursor(); // Termine le traitement de la requête
+    
+    }
+    
+    
+    }     
+    
+    
