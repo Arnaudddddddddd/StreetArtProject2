@@ -50,7 +50,7 @@ if ($authorized) {
 }
 
 //Génération du Header de la page
-generateHTMLHeader($pageTitle, "style.css");
+generateHTMLHeader($pageTitle,"css/perso.css");
 
 //Affichage du contenu de la page
 if ($prewlcm) {

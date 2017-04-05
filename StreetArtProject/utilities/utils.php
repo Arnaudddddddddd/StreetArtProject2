@@ -179,7 +179,7 @@ CHAINE_DE_FIN;
 CHAINE_DE_FIN;
 }
 
-function generateHTMLHeader($title, $style) {
+function generateHTMLHeader($title,$style) {
     echo<<<CHAINE_DE_FIN
 <!DOCTYPE html>
    <html>
@@ -201,10 +201,10 @@ function generateHTMLHeader($title, $style) {
         <!-- CSS Bootstrap -->
         <link  href="css/perso.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/perso.css" />
         <link href="css/bootstrap.css" rel="stylesheet">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        
         <style>
         /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
@@ -219,9 +219,10 @@ function generateHTMLHeader($title, $style) {
         }
         </style>
         <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+            
         <!-- CSS Perso -->
-        <link href="css/perso.css" rel="stylesheet">
-    </head>
+        <link rel="stylesheet" type="text/css" href=$style/>
+   </head>
     <body>
 CHAINE_DE_FIN;
 }
