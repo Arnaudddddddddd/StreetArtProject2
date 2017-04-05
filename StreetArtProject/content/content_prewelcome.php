@@ -10,7 +10,7 @@
         width: 1000px;
         height: 200px;
         margin-left: -500px; /* Cette valeur doit être la moitié négative de la valeur du width */
-        margin-top: -100px; /* Cette valeur doit être la moitié négative de la valeur du height */
+        margin-top: -80px; /* Cette valeur doit être la moitié négative de la valeur du height */
     }
     nav.navbar-perso{
         background-color: transparent;
@@ -21,17 +21,22 @@
     height: 0;
     border-left: 54px solid transparent;
     border-right: 54px solid transparent;
-    border-top: 90px solid #FF9100;
+    border-top: 90px solid white;
     }
     .titresite{
-        color:#FF9100;
+        color:white;
         font-size: 50px;
+    }
+    .cliquezici{
+        color:white;
+        font-size:40px;
     }
 </style>
 
 <div class="centre">
     <div class="col-md-12 text-center">
-        <span class="titresite">Bienvenue sur notre site</span>
+        <span class="titresite">Bienvenue sur notre site</span></br>
+        <span class="cliquezici">Cliquez ci-dessous</span>
     </div>
 </div>
 
