@@ -1,6 +1,6 @@
 <style>
     body{
-        background-image: url("https://s-media-cache-ak0.pinimg.com/originals/37/1b/1b/371b1b871c9bc1eda638828d934df276.jpg");
+        background-image: url("https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTR2o1ZU1oUGpCWFU");
         background-position: center;
     }
     div.centre {
@@ -16,34 +16,29 @@
         background-color: transparent;
         border-color: transparent;
     }
-    a.triangle {
-    width: 0;
-    height: 0;
-    border-left: 54px solid transparent;
-    border-right: 54px solid transparent;
-    border-top: 90px solid white;
-    }
     .titresite{
-        color:white;
-        font-size: 50px;
+        color: #768766;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     }
     .cliquezici{
-        color:white;
-        font-size:40px;
+        color: #768766;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     }
 </style>
 
 <div class="centre">
     <div class="col-md-12 text-center">
-        <span class="titresite">Bienvenue sur notre site</span></br>
-        <span class="cliquezici">Cliquez ci-dessous</span>
+        <h1 class="titresite">Bienvenue sur notre site</h1> </br>
+        <h3 class="cliquezici">Cliquez ci-dessous</h3>
     </div>
 </div>
 
 <nav class="navbar navbar-perso navbar-fixed-bottom">
   <div class="container">
       <div class="col-md-13 text-center">
-          <a class="btn triangle" href="index.php?page=welcome" role="button"></a>
+          <a class="btn" href="index.php?page=welcome" role="button">
+              <img src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTSng0eHFqQWxUZXM" alt="triangle" height="150">
+          </a>
     </div>
   </div>
 </nav>
