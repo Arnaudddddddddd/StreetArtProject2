@@ -86,11 +86,11 @@ if (!$form_values_valid) {
                     <label for="adresse">Adresse</label>
                     <input type="text" class="form-control" id="adresse" placeholder="Adresse">
                 </div>
-                <button class="btn btn-success" style="padding-left=10px;" id="btn-geoloc">Me géolocaliser</button>                
+                <button class="btn btn-danger" id="btn-geocode">Récupérer les coordonnées</button>
             </form>
             <br>
             <form class="form-inline">
-                <button class="btn btn-danger" id="btn-geocode">Récupérer les coordonnées</button>
+                <button class="btn btn-success" style="padding-left=10px;" id="btn-geoloc">Me géolocaliser</button>                
             </form>
             <br>
             <form class="form-inline">

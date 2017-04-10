@@ -11,7 +11,7 @@ class Image {
     
     public static function insererImage($dbh,$id,$utilisateur,$nom,$adresse,$lat,$lng){
     $sth = $dbh->prepare("INSERT INTO `images` (`id`,`utilisateur`, `nom`, `adresse`, `lat`, `lng`) VALUES(?,?,?,?,?,?)");
-    $sth->execute(array($id,$utilisateur,$nom,$adresse,$lat,$lng));
+    $sth->execute(array($id,$utilisateur, htmlspecialchars($nom),$adresse,$lat,$lng));
     if($sth->rowCount()>0){
         return true;
     }
