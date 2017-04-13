@@ -222,6 +222,13 @@ function generateHTMLHeader($title,$style) {
             
         <!-- CSS Perso -->
         <link rel="stylesheet" type="text/css" href=$style/>
+        
+        <!-- Include Unite Gallery core files -->
+	<script src='unitegallery/js/unitegallery.min.js' type='text/javascript'  ></script>
+        <link  href='unitegallery/css/unite-gallery.css' rel='stylesheet' type='text/css' />
+				
+        <!-- include Unite Gallery Theme Files -->
+	<script src='unitegallery/themes/slider/ug-theme-slider.js' type='text/javascript'></script>
    </head>
     <body>
 CHAINE_DE_FIN;
