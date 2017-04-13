@@ -66,7 +66,6 @@ if ($prewlcm) {
     echo<<<END
             <div id="content">
                 <div>
-                    <h1>$pageTitle</h1>
 END;
     
     if(isset($_SESSION['admin']) and $_SESSION['admin']==true){

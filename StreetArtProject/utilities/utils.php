@@ -6,24 +6,24 @@ $page_list = array(
     array("name" => "welcome",
         "title" => "Accueil de notre site",
         "menutitle" => "Accueil"),
+    array("name" => "map",
+        "title" => "Carte",
+        "menutitle" => "La carte"),
     array("name" => "contacts",
         "title" => "Qui sommes-nous ?",
         "menutitle" => "Nous contacter"),
-    array("name" => "news",
-        "title" => "Dernières nouvelles",
-        "menutitle" => "Les dernières nouvelles"),
     array("name" => "changePassword",
         "title" => "Changer le mot de passe",
         "menutitle" => "Changer le mot de passe"),
     array("name" => "submit",
         "title" => "Soumettre une image",
         "menutitle" => "Soumettre"),
-    array("name" => "register",
-        "title" => "S'inscrire",
-        "menutitle" => "S'inscrire"),
     array("name" => "signin",
         "title" => "S'identifier",
         "menutitle" => "S'identifier"),
+    array("name" => "register",
+        "title" => "S'inscrire",
+        "menutitle" => "S'inscrire"),
     array("name" => "deleteUser",
         "title" => "Se désinscrire",
         "menutitle" => "Se désinscrire"),
@@ -71,6 +71,12 @@ function generateMenuConnexion($askedPage) {
         <span class="icon-bar"></span>
       </button>
     </div>
+    
+    <style>
+        .navbar{
+            margin-bottom: 0px;
+        }
+    </style>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -110,7 +116,7 @@ CHAINE_DE_FIN;
                 </ul>
                 <ul class='nav navbar-nav navbar-right'>
                     <form class="form-inline" action="index.php?todo=logout" method="post" >
-                        <button type="submit" class="btn btn-default">Se déconnecter</button>
+                        <button type="submit" class="btn navbar-btn">Se déconnecter</button>
                     </form>
                 </ul>
 CHAINE_DE_FIN;
@@ -155,12 +161,12 @@ function generateMenuGeneral() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Street Art Map</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
 CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
@@ -238,6 +244,9 @@ CHAINE_DE_FIN;
 }
 
 function generateHTMLFooter() {
+    echo <<<CHAINE_DE_FIN
+    
+CHAINE_DE_FIN;
     echo"</body>";
     echo"</html>";
 }
