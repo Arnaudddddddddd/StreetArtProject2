@@ -34,16 +34,9 @@ echo <<<END
                   parseFloat(markerElem.getAttribute('lat')),
                   parseFloat(markerElem.getAttribute('lng')));
 
+              var infowincontent = '<div>'+name+'</div>'+'<div>'+address+'</div>'+'<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+'">'+'Voir'+'</a>';    
 
-              var infowincontent = document.createElement('div');
-              var strong = document.createElement('strong');
-              strong.textContent = name;
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
-
-              var text = document.createElement('text');
-              text.textContent = address;
-              infowincontent.appendChild(text);
+              
               var icon = customLabel[type] || {};
               var marker = new google.maps.Marker({
                 map: map,

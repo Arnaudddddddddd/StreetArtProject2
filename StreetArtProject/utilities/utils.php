@@ -32,7 +32,10 @@ $page_list = array(
         "menutitle" => "Mes images"),
     array("name" => "deconnect",
         "title" => "Se déconnecter",
-        "menutitle" => "Se déconnecter"));
+        "menutitle" => "Se déconnecter"),
+    array("name" => "description",
+        "title" => "Détail",
+        "menutitle" => "description"));
 
 function checkPage($askedPage) {
     $boolean = false;
@@ -162,7 +165,7 @@ CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
     foreach ($page_list as $page) {
-        if ($page['title'] != "Mes images" and $page['title'] != "S'identifier" and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Se déconnecter") {
+        if ($page['title'] != "Mes images" and $page['title'] != "S'identifier" and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Se déconnecter" and $page['title'] != "Détail") {
             if ($page['title'] == $pageTitle) {
                 echo '<li class="active"><a href="index.php?page=' . $page['name'] . '">' . $page['menutitle'] . '</a></li>';
             }
