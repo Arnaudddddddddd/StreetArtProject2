@@ -1,4 +1,4 @@
-<!--PREMIER EXEMPLE JAVASCRIPT-->
+<!---PREMIER EXEMPLE JAVASCRIPT-->
 <!--<span id="ZoneDeClic"></span>
 <div id="TexteAAfficher" style="text-align:center;font-size:large">Solution</div>-->
 
