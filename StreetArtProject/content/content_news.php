@@ -34,7 +34,7 @@ echo <<<END
                   parseFloat(markerElem.getAttribute('lat')),
                   parseFloat(markerElem.getAttribute('lng')));
 
-              var infowincontent = '<div>'+name+'</div>'+'<div>'+address+'</div>'+'<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+'">'+'Voir'+'</a>';    
+              var infowincontent = '<strong>'+name+'</strong>'+'<div>'+address+'</div>'+'<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+'">'+'Voir'+'</a>'+'<br>'+'<img src="images/'+ name + '.jpg">';    
 
               
               var icon = customLabel[type] || {};

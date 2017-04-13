@@ -5,13 +5,14 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
         isset($_POST["subAdresse"]) && $_POST["subAdresse"] != "" &&
         isset($_POST["lat"]) && $_POST["lat"] != "" &&
-        isset($_POST["lng"]) && $_POST["lng"] != "") {
+        isset($_POST["lng"]) && $_POST["lng"] != "" &&
+        isset($_POST["description"]) && $_POST["description"] != "") {
     // code de traitement    
     $dbh = Database::connect();
     $test = Image::getImage($dbh, $_POST['nom']);
     var_dump($test);
     if ($test == null) {
-        $verif = Image::insererImage($dbh,$_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], 'style.css');
+        $verif = Image::insererImage($dbh,$_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'],$_POST['description'], 'style.css');
         $id = $verif;
         if ($verif!=0) {
             $_POST['id']=$id;
@@ -71,8 +72,11 @@ if (!$form_values_valid) {
     </p>
   <br>
   <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-  <div>Taille du fichier limitée à 1 Mo</div>
+  <strong>Taille du fichier limitée à 1 Mo</strong>
   <input type="file" name="fichier"/>   
+  <br>
+  <label for="description">Description</label>
+  <textarea id="description" type="text" name="description" rows=10 COLS=50></textarea> 
   <br>
   <input type="submit" value="Soumettre">
 </form>
