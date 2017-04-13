@@ -7,6 +7,7 @@ if (!isset($_SESSION['initiated'])) {
     session_regenerate_id();
     $_SESSION['initiated'] = true;
     $_SESSION['login'] = null;
+    $_SESSION['admin'] = false;
 }
 
 require('utilities/phpsqlajax_dbinfo.php');
@@ -66,8 +67,15 @@ if ($prewlcm) {
             <div id="content">
                 <div>
                     <h1>$pageTitle</h1>
-                </div>
 END;
+    
+    if(isset($_SESSION['admin']) and $_SESSION['admin']==true){
+        echo<<<END
+            <h2>Vous êtes un administrateur de ce site</h2>
+END;
+}
+        echo '</div>';
+
     if ($askedPage == 'changePassword') {
         require("formulaire/changePassword.php");
     } else {

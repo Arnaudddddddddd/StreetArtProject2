@@ -36,6 +36,17 @@ class Image {
     }
     }
     
+    public static function getAllImages($dbh){
+    $reponse = "SELECT * FROM `images`";
+    $sth = $dbh->prepare($reponse);
+    $sth->execute();
+    while ($donnees = $sth->fetch()){
+    $array[]=$donnees['nom'];
+    }
+    if(isset($array)){
+        return $array;
+    }}
+    
     public static function getImageUtilisateur($dbh,$utilisateur){
 //    $query = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
 //    $sth = $dbh->prepare($query);
@@ -50,15 +61,17 @@ class Image {
 //        return null;
 //    }   
 // On récupère tout le contenu de la table jeux_video
-$reponse = $dbh->query("SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'");
+    $reponse = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
+    $sth = $dbh->prepare($reponse);
+    $sth->execute();
 // On affiche chaque entrée une à une
-while ($donnees = $reponse->fetch()){
-    $array[]=$donnees['nom'];
+    while ($donnees = $sth->fetch()){
+        $array[]=$donnees['nom'];
 }
-
-$reponse->closeCursor(); // Termine le traitement de la requête
-return $array;    
-    }
+    $sth->closeCursor(); // Termine le traitement de la requête
+    if(isset($array)){
+        return $array;    
+    }}
     
     
     }     

@@ -7,6 +7,9 @@ function logIn($dbh){
     if($test1==true && $test2==true){
         $_SESSION['loggedIn']=true;
         $_SESSION['login'] = $_POST['login'];
+        if($_SESSION['login']== 'admin'){
+            $_SESSION['admin']=true;
+        }
     }
 }
 
