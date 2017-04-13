@@ -92,12 +92,6 @@ END;
     }
     echo "</div>";
 }
-
-$url="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo=Mountain";
-$texte_du_lien="Site du zero";
-
-echo '<a href='.$url.'>Cliquer ici</a>';
-
 $dbh = null;
 
 //Génération de la fin de page

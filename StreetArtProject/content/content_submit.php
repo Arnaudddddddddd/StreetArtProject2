@@ -72,11 +72,11 @@ if (!$form_values_valid) {
     </p>
   <br>
   <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-  <div>Taille du fichier limitée à 1 Mo</div>
+  <strong>Taille du fichier limitée à 1 Mo</strong>
   <input type="file" name="fichier"/>   
   <br>
   <label for="description">Description</label>
-  <input id="description" type="text" name="description"> 
+  <textarea id="description" type="text" name="description" rows=10 COLS=50></textarea> 
   <br>
   <input type="submit" value="Soumettre">
 </form>
