@@ -1,21 +1,21 @@
 <?php
-
 $_POST['utilisateur']=$_SESSION['login'];
 $form_values_valid = false;
-if (isset($_POST["id"]) && $_POST["id"] != "" &&
-        isset($_POST["nom"]) && $_POST["nom"] != "" &&
+if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
         isset($_POST["subAdresse"]) && $_POST["subAdresse"] != "" &&
         isset($_POST["lat"]) && $_POST["lat"] != "" &&
         isset($_POST["lng"]) && $_POST["lng"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $test = Image::getImage($dbh, $_POST['id']);
+    $test = Image::getImage($dbh, $_POST['nom']);
     var_dump($test);
     if ($test == null) {
-        $verif = Image::insererImage($dbh, $_POST['id'],$_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], 'style.css');
-        
-        if ($verif) {
+        $verif = Image::insererImage($dbh,$_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], 'style.css');
+        $id = $verif;
+        if ($verif!=0) {
+            $_POST['id']=$id;
+            var_dump($_POST);
             $form_values_valid = true;
         }
     }
@@ -24,6 +24,7 @@ if (isset($_POST["id"]) && $_POST["id"] != "" &&
     $dbh = null;
 }
 
+
 if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier']['tmp_name'])) {
 // Le fichier a bien été téléchargé
 // Par sécurité on utilise getimagesize plutot que les variables $_FILES
@@ -31,7 +32,7 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 //    echo $larg . " " . $haut . " " . $type . " " . $attr;
 // JPEG => type=2
     if ($type == 2) {
-        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'].'.jpg')) {
+        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'].$_POST['id'].'.jpg')) {
             echo "Copie réussie";
         } else {
             echo "Echec de la copie";
@@ -48,10 +49,6 @@ if (!$form_values_valid) {
 <tr style="padding-left:10px"> 
 <td>        
 <form action="index.php?page=submit" style="height: 470px;" method="post" enctype="multipart/form-data">
- <p>
-  <label for="id">Id:</label>
-  <input id="id" type="int" required name="id">
- </p>
 
   <p>
   <label for="nom">Nom:</label>
@@ -73,6 +70,8 @@ if (!$form_values_valid) {
   <input id="lng" type="float" required name="lng">
     </p>
   <br>
+  <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+  <div>Taille du fichier limitée à 1 Mo</div>
   <input type="file" name="fichier"/>   
   <br>
   <input type="submit" value="Soumettre">

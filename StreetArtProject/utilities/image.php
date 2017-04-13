@@ -9,20 +9,51 @@ class Image {
     public $lng;
     
     
-    public static function insererImage($dbh,$id,$utilisateur,$nom,$adresse,$lat,$lng){
-    $sth = $dbh->prepare("INSERT INTO `images` (`id`,`utilisateur`, `nom`, `adresse`, `lat`, `lng`) VALUES(?,?,?,?,?,?)");
-    $sth->execute(array($id,$utilisateur, htmlspecialchars($nom),$adresse,$lat,$lng));
+    public static function insererImage($dbh,$utilisateur,$nom,$adresse,$lat,$lng){
+    $sth = $dbh->prepare("INSERT INTO `images` (`utilisateur`, `nom`, `adresse`, `lat`, `lng`) VALUES(?,?,?,?,?)");
+    $sth->execute(array($utilisateur, htmlspecialchars($nom),$adresse,$lat,$lng));
+    $id_nouveau = $dbh->lastInsertId();
     if($sth->rowCount()>0){
-        return true;
+        return $id_nouveau;
     }
     else{
-        return false;
+        return null;
     }
     }
     
     
-    public static function getImage($dbh,$id){
-    $query = "SELECT * FROM `images` WHERE `id`='$id'";
+    public static function getImage($dbh,$nom){
+    $query = "SELECT * FROM `images` WHERE `nom`='$nom'";
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
+    $sth->execute();
+    $picture = $sth->fetch();
+    
+    if($sth->rowCount()>0){
+        return $picture;
+    }
+    else{
+        return null;
+    }
+    }
+    
+    public static function getLastID($dbh){
+    $query = "SELECT * FROM `images` WHERE `nom`='$nom'";
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
+    $sth->execute();
+    $picture = $sth->fetch();
+    
+    if($sth->rowCount()>0){
+        return $picture;
+    }
+    else{
+        return null;
+    }
+    }
+    
+    public static function getId($dbh,$nom){
+    $query = "SELECT * FROM `images` WHERE `nom`='$nom'";
     $sth = $dbh->prepare($query);
     $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
     $sth->execute();
