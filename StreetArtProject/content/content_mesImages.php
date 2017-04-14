@@ -5,7 +5,7 @@ global $pageTitle;
 if ($pageTitle == "Mes images") {
     if ($_SESSION['admin'] == false) {
         $resultat = Image::getImageUtilisateur($dbh, $utilisateur);
-
+        var_dump($resultat);
         if (isset($resultat)) {
             //var_dump($resultat);
             echo '<div id="gallery1" style="margin:0px auto; display:none;">';
