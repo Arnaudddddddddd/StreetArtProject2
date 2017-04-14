@@ -9,11 +9,13 @@ $resultat = Image::getImageId($dbh,$_GET["iD"]);
     <tr>
         <td>
 END;
-         print '<img src="'.$link.'"/>';
+$largeur = 600;
+$hauteur = Image::hauteurProportionnelle($resultat, $largeur);
+         print '<img src="'.$link.'" width="$'.$largeur.'px" height="'.$hauteur.'px"/>';
 
 echo "         
         </td>
-        <td>
+        <td style='padding-left:20px;'>
             <strong>".$resultat->nom."</strong>
             <div>Utilisateur: ".$resultat->utilisateur."</div><br>
             <div>".$resultat->description."</div>";    

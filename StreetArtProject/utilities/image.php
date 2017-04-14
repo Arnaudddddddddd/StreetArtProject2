@@ -104,6 +104,17 @@ class Image {
         }
     }
 
+    public static function hauteurProportionnelle($image,$newLargeur){
+        $id = $image->id;
+        $nom = $image->nom;
+        $adresse = "images/$nom$id.jpg";
+        $source = imagecreatefromjpeg($adresse);
+        $largeur = imagesx($source);
+        $hauteur = imagesy($source);
+        $newhauteur = abs(($newLargeur/$largeur)*$hauteur);
+        return $newhauteur;
+    }
+    
     public static function createMiniature($name) {
         $source = imagecreatefromjpeg("images/$name.jpg"); // La photo est la source
         // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
