@@ -12,11 +12,11 @@ if ($pageTitle == "Mes images") {
             foreach ($resultat as $name) {
                 print($name);
                 echo <<<CHAINE_DE_FIN
-        <img alt="$name"
-         src="images/$name.jpg"
-         data-image="images/$name.jpg"
-         data-description="This is $name"
-        >
+                <img alt="$name"
+                    src="miniatures/mini_$name.jpg"
+                    data-image="images/$name.jpg"
+                    data-description="This is $name"
+                >
 CHAINE_DE_FIN;
             }
             echo <<<CHAINE_DE_FIN
@@ -25,11 +25,8 @@ CHAINE_DE_FIN;
 <script type="text/javascript">
     jQuery(document).ready(function () {
         jQuery("#gallery1").unitegallery({
-            gallery_theme: "slider",
-            gallery_autoplay: false,
-            gallery_height: 3000,
-            gallery_width: 6300,
-            slider_control_zoom: false
+            gallery_theme: "tiles",
+            tiles_type: "nested"
         });
     });
 </script>
@@ -45,7 +42,7 @@ CHAINE_DE_FIN;
         foreach ($resultat as $name) {
             echo <<<CHAINE_DE_FIN
         <img alt="$name"
-         src="images/$name.jpg"
+         src="miniatures/mini_$name.jpg"
          data-image="images/$name.jpg"
          data-description="This is $name"
         >

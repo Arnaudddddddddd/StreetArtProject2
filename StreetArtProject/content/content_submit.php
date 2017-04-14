@@ -1,5 +1,6 @@
 <?php
-$_POST['utilisateur']=$_SESSION['login'];
+
+$_POST['utilisateur'] = $_SESSION['login'];
 $form_values_valid = false;
 if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
@@ -12,10 +13,10 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
     $test = Image::getImage($dbh, $_POST['nom']);
     var_dump($test);
     if ($test == null) {
-        $verif = Image::insererImage($dbh,$_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'],$_POST['description'], 'style.css');
+        $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
         $id = $verif;
-        if ($verif!=0) {
-            $_POST['id']=$id;
+        if ($verif != 0) {
+            $_POST['id'] = $id;
             var_dump($_POST);
             $form_values_valid = true;
         }
@@ -33,8 +34,22 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 //    echo $larg . " " . $haut . " " . $type . " " . $attr;
 // JPEG => type=2
     if ($type == 2) {
-        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'].$_POST['id'].'.jpg')) {
+        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'] . $_POST['id'] . '.jpg')) {
             echo "Copie réussie";
+            $name = $_POST['nom'].$_POST['id'];
+            $source = imagecreatefromjpeg("images/$name.jpg"); // La photo est la source
+            $destination = imagecreatetruecolor(200, 150); // On crée la miniature vide
+            // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
+            $largeur_source = imagesx($source);
+            $hauteur_source = imagesy($source);
+            $largeur_destination = imagesx($destination);
+            $hauteur_destination = imagesy($destination);
+
+            // On crée la miniature
+            imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
+
+            // On enregistre la miniature sous le nom "mini_couchersoleil.jpg"
+            imagejpeg($destination, "miniatures/mini_$name.jpg");
         } else {
             echo "Echec de la copie";
         }
@@ -43,7 +58,7 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
     }
 }
 
-if (!$form_values_valid) {    
+if (!$form_values_valid) {
     echo <<<CHAINE_DE_FIN
 
 <table> 

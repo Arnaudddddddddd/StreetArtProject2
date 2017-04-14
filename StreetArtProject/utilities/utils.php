@@ -238,7 +238,7 @@ function generateHTMLHeader($title,$style) {
 				
         <!-- include Unite Gallery Theme Files -->
 	<script src='unitegallery/themes/slider/ug-theme-slider.js' type='text/javascript'></script>
-        <!--script src='unitegallery/themes/tiles/ug-theme-tiles.js' type='text/javascript'></script-->
+        <script src='unitegallery/themes/tiles/ug-theme-tiles.js' type='text/javascript'></script>
    </head>
     <body>
 CHAINE_DE_FIN;
