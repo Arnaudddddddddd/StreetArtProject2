@@ -10,17 +10,14 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["description"]) && $_POST["description"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $test = Image::getImage($dbh, $_POST['nom']);
-    var_dump($test);
-    if ($test == null) {
-        $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
-        $id = $verif;
-        if ($verif != 0) {
+    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
+    $id = $verif;
+    if ($verif != 0) {
             $_POST['id'] = $id;
             var_dump($_POST);
             $form_values_valid = true;
         }
-    }
+    
     // si le traitement réussit, on passe $form_value_valid à true
 
     $dbh = null;

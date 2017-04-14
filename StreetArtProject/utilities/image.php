@@ -23,8 +23,8 @@ class Image {
     }
     
     
-    public static function getImage($dbh,$nom){
-    $query = "SELECT * FROM `images` WHERE `nom`='$nom'";
+    public static function getImageId($dbh,$id){
+    $query = "SELECT * FROM `images` WHERE `id`='$id'";
     $sth = $dbh->prepare($query);
     $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
     $sth->execute();
