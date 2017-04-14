@@ -10,17 +10,14 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["description"]) && $_POST["description"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $test = Image::getImage($dbh, $_POST['nom']);
-    var_dump($test);
-    if ($test == null) {
-        $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
-        $id = $verif;
-        if ($verif != 0) {
+    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
+    $id = $verif;
+    if ($verif != 0) {
             $_POST['id'] = $id;
             var_dump($_POST);
             $form_values_valid = true;
         }
-    }
+    
     // si le traitement réussit, on passe $form_value_valid à true
 
     $dbh = null;
@@ -37,7 +34,19 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
         if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'] . $_POST['id'] . '.jpg')) {
             echo "Copie réussie";
             $name = $_POST['nom'].$_POST['id'];
-            Image::createMiniature($name);
+            $source = imagecreatefromjpeg("images/$name.jpg"); // La photo est la source
+            $destination = imagecreatetruecolor(200, 150); // On crée la miniature vide
+            // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
+            $largeur_source = imagesx($source);
+            $hauteur_source = imagesy($source);
+            $largeur_destination = imagesx($destination);
+            $hauteur_destination = imagesy($destination);
+
+            // On crée la miniature
+            imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
+
+            // On enregistre la miniature sous le nom "mini_couchersoleil.jpg"
+            imagejpeg($destination, "miniatures/mini_$name.jpg");
         } else {
             echo "Echec de la copie";
         }

@@ -36,8 +36,8 @@ echo <<<END
 
               var infowincontent = '<strong>'+name+'</strong>'+
                   '<div>'+address+'</div>'+
-                  '<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+'">'+'Voir'+'</a>'+
-                  '<br>'+'<img src="images/'+ name + '.jpg" width="100px" height="100px">';    
+                  '<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+id+'&iD='+id+'">'+'Voir'+'</a>'+
+                  '<br>'+'<img src="images/'+ name + id + '.jpg" width="100px" height="100px">';    
 
               
               var icon = customLabel[type] || {};
