@@ -25,9 +25,6 @@ if($change_Password){
 if(!$change_Password){
  echo <<<CHAINE_DE_FIN
 
-<!DOCTYPE html>   
-   <html>
-     
 <form action="index.php?page=deleteUser" method="post"
       oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
  <p>
@@ -40,8 +37,6 @@ if(!$change_Password){
  </p>
   <input type="submit" value="Valider">
 </form>
-    
-</html>
     
 CHAINE_DE_FIN;
 }
