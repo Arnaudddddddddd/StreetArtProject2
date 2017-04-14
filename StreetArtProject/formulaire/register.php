@@ -1,5 +1,63 @@
-<?php
+<style>
+    p {
+        margin-top: 0px;
+    }
 
+    fieldset {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    legend {
+        padding: 0px 3px;
+        font-weight: bold;
+        font-variant: small-caps;
+    }
+
+    label {
+        width: 110px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 6px;
+    }
+
+    em {
+        font-weight: bold;
+        font-style: normal;
+        color: #f00;
+    }
+
+    input:focus {
+        background: #eaeaea;
+    }
+
+    input, textarea {
+        width: 249px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    select {
+        width: 254px;
+    }
+
+    input[type=checkbox] {
+        width: 10px;
+    }
+
+    input[type=submit] {
+        width: 150px;
+        padding: 10px;
+    }
+
+    .centrage{
+        text-align: center;
+    }
+</style>
+
+<?php
 $form_values_valid = false;
 
 
@@ -15,9 +73,9 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     // code de traitement    
     $dbh = Database::connect();
     $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
-    if ($test == null && $_POST["up"]==$_POST["up2"]) {
+    if ($test == null && $_POST["up"] == $_POST["up2"]) {
         $verif = Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['promotion'], $_POST['email'], $_POST['naissance'], 'style.css');
-        
+
         if ($verif) {
             $form_values_valid = true;
         }
@@ -27,65 +85,52 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     $dbh = null;
 }
 
-if($form_values_valid){
+if ($form_values_valid) {
     echo "Nous avons bien enregistré votre compte. Bienvenue !!";
 }
 
 if (!$form_values_valid) {
     echo <<<CHAINE_DE_FIN
 
-<!DOCTYPE html>   
-   <html>
-     
-<form action="index.php?page=register" method="post"
-      oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
- <p>
-  <label for="login">Login:</label>
-  <input id="login" type="text" required name="login">
- </p>
-    
-  <p>
-  <label for="nom">Nom:</label>
-  <input id="nom" type="text" required name="nom">
- </p>
-   
-  <p>
-  <label for="prenom">Prenom:</label>
-  <input id="prenom" type="text" required name="prenom" >
-   </p>
-   
-  <p>
-  <label for="naissance">Date de naissance:</label>
-  <input id="naissance" type="date" required name="naissance">
- </p>
-    
-  <p>
-  <label for="email">Email:</label>
-  <input id="email" type="email" required name="email">
- </p>
-  
-    <p>
-  <label for="promotion">Promotion:</label>
-  <input id="promotion" type="number" required name="promotion">
- </p> 
-   
- <p>
-  <label for="password1">Password:</label>
-  <input id="password1" type="password" required name="up">
- </p>
- <p>
-  <label for="password2">Confirm password:</label>
-  <input id="password2" type="password" name="up2">
- </p>
-  <input type="submit" value="Create account">
-</form>
-    
-</html>
+<div class="centrage">
+    <h2>Inscrivez-vous</h2>
+    <form class="form-inline" action="index.php?page=register" method="post"
+          oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
+        <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
+
+        <fieldset>
+            <legend>Identifiants de connexion</legend>
+
+            <label for="login">Login<em>*</em></label>
+            <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br><br>
+
+            <label for="password1">Mot de passe<em>*</em></label>
+            <input type="password" class="form-control" name="up" id="password1" placeholder="Nouveau" required><br><br>
+
+            <label for="password2">Confirmation mot de passe<em>*</em></label>
+            <input type="password" class="form-control" name="up2" id="password2" placeholder="Confirmer" required><br>            
+        </fieldset>
+
+        <fieldset>
+            <legend>Contact</legend>
+            
+            <label for="nom">Nom:</label>
+            <input id="nom" class="form-control" type="text" placeholder="Nom" required name="nom"><br><br>
+
+            <label for="prenom">Prenom:</label>
+            <input id="prenom" class="form-control" type="text" placeholder="Prenom" required name="prenom" ><br><br>
+
+            <label for="email">Email:</label>
+            <input id="email" class="form-control" placeholder="Email" type="email" required name="email"><br><br>
+            
+            <label for="naissance">Date de naissance:</label>
+            <input id="naissance" class="form-control" type="date" required name="naissance"><br><br>
+        </fieldset>
+
+        <p><button type="submit" class="btn btn-default">Bienvenue</button></p>
+        
+    </form>
+</div>
     
 CHAINE_DE_FIN;
-}   
-    
-
-
-
-
+}

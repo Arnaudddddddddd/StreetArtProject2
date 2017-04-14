@@ -104,6 +104,4 @@ if(!$change_Password){
     </form>
 </div>
 CHAINE_DE_FIN;
-}    
-    
-?>
+}
