@@ -58,16 +58,16 @@
 </style>
 
 <div class="centrage">
-    <h2>Formulaire d'identification</h2>
-    <form class="form-inline" action="index.php?page=welcome&todo=login" method="post">
-        <p><i>Complétez le formulaire. Les champs marqué par </i><em>*</em> sont <em>obligatoires</em></p><br>
-        <fieldset>
-            <legend>Identifiez-vous</legend>
-            <label class="sr-only" for="exampleInputEmail3">Login</label>
-            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Login" name="login" required>
-            <label class="sr-only" for="exampleInputPassword3">Password</label><br>
-            <input type="password" class="form-control" name="mdp" id="exampleInputPassword3" placeholder="Mot de passe" required>
-        </fieldset>
-        <p><button type="submit" class="btn btn-default">Sign in</button></p>
-    </form>
+        <h2>Formulaire d'identification</h2>
+        <form class="form-inline" action="index.php?page=welcome&todo=login" method="post">
+            <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
+            <fieldset>
+                <legend>Identifiez-vous</legend>
+                <label for="exampleInputEmail3">Login</label>
+                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Login" name="login" required><br>
+                <label for="exampleInputPassword3">Password</label>
+                <input type="password" class="form-control" name="mdp" id="exampleInputPassword3" placeholder="Mot de passe" required><br>
+            </fieldset>
+            <p><button type="submit" class="btn btn-default">Sign in</button></p>
+        </form>
 </div>
