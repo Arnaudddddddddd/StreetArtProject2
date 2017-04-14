@@ -73,7 +73,8 @@ class Image {
     $sth = $dbh->prepare($reponse);
     $sth->execute();
     while ($donnees = $sth->fetch()){
-    $array[]=$donnees['nom'];
+        $nomPhoto = $donnees['nom'].$donnees['id'];
+        $array[]=$nomPhoto;
     }
     if(isset($array)){
         return $array;
@@ -98,7 +99,8 @@ class Image {
     $sth->execute();
 // On affiche chaque entrée une à une
     while ($donnees = $sth->fetch()){
-        $array[]=$donnees['nom'];
+        $nomPhoto = $donnees['nom'].$donnees['id'];
+        $array[]=$nomPhoto;
 }
     $sth->closeCursor(); // Termine le traitement de la requête
     if(isset($array)){
