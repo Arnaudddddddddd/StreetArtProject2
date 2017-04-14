@@ -70,6 +70,7 @@ function generateMenuConnexion($askedPage) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <a class="navbar-brand" href="#">Street Art Map</a>
     </div>
     
     <style>
@@ -80,7 +81,7 @@ function generateMenuConnexion($askedPage) {
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
 CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
@@ -161,12 +162,11 @@ function generateMenuGeneral() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Street Art Map</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
 CHAINE_DE_FIN;
     global $pageTitle;
     global $page_list;
@@ -238,6 +238,7 @@ function generateHTMLHeader($title,$style) {
 				
         <!-- include Unite Gallery Theme Files -->
 	<script src='unitegallery/themes/slider/ug-theme-slider.js' type='text/javascript'></script>
+        <!--script src='unitegallery/themes/tiles/ug-theme-tiles.js' type='text/javascript'></script-->
    </head>
     <body>
 CHAINE_DE_FIN;
