@@ -1,42 +1,106 @@
-<?php
+<style>
+    p {
+        margin-top: 0px;
+    }
 
-$change_Password=false;
+    fieldset {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    legend {
+        padding: 0px 3px;
+        font-weight: bold;
+        font-variant: small-caps;
+    }
+
+    label {
+        width: 110px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 6px;
+    }
+
+    em {
+        font-weight: bold;
+        font-style: normal;
+        color: #f00;
+    }
+
+    input:focus {
+        background: #eaeaea;
+    }
+
+    input, textarea {
+        width: 249px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    select {
+        width: 254px;
+    }
+
+    input[type=checkbox] {
+        width: 10px;
+    }
+
+    input[type=submit] {
+        width: 150px;
+        padding: 10px;
+    }
+
+    .centrage{
+        text-align: center;
+    }
+</style>
+
+<?php
+$change_Password = false;
 
 //var_dump($_POST);
-if(isset($_POST["login"]) && $_POST["login"] != "" &&      
-   isset($_POST["up"]) && $_POST["up"] != ""){
+if (isset($_POST["login"]) && $_POST["login"] != "" &&
+        isset($_POST["up"]) && $_POST["up"] != "") {
     $dbh = Database::connect();
     $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
-    $test1 =  Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up"]);
+    $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up"]);
     //var_dump($test1);
-    if ($test !=null && $test1!=0){
-    $sth = $dbh->prepare("DELETE FROM `utilisateurs` WHERE `login`='".$_POST['login']."'");
-    $sth->execute();
-    $change_Password = true;
+    if ($test != null && $test1 != 0) {
+        $sth = $dbh->prepare("DELETE FROM `utilisateurs` WHERE `login`='" . $_POST['login'] . "'");
+        $sth->execute();
+        $change_Password = true;
     }
-    $dbh=null;
+    $dbh = null;
 }
 
-if($change_Password){
+if ($change_Password) {
     echo "<div>Votre compte a été supprimé</div>";
     echo "<meta http-equiv='Refresh' content='1; URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome&todo=logout'>";
 }
 
-if(!$change_Password){
- echo <<<CHAINE_DE_FIN
+if (!$change_Password) {
+    echo <<<CHAINE_DE_FIN
 
-<form action="index.php?page=deleteUser" method="post"
-      oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
- <p>
-  <label for="login">Login:</label>
-  <input id="login" type="text" required name="login">
- </p>
- <p>
-  <label for="password1">Password:</label>
-  <input id="password1" type="password" required name="up">
- </p>
-  <input type="submit" value="Valider">
-</form>
+<div class="centrage">
+    <h2>Supprimer votre compte</h2>
+    <form class="form-inline" action="index.php?page=deleteUser" method="post"
+          oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
+        <p>
+            <i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em><br>
+            Cette action est définitive.
+        </p><br>
+        <fieldset>
+            <legend>Supprimez votre compte</legend>
+            <label for="login">Login<em>*</em></label>
+            <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br>
+            <label for="password0">Mot de passe<em>*</em></label>
+            <input type="password" class="form-control" name="up" id="password0" placeholder="Ancien" required><br>
+        </fieldset>
+        <p><button type="submit" class="btn btn-default">Au revoir</button></p>
+    </form>
+</div>
     
 CHAINE_DE_FIN;
 }
