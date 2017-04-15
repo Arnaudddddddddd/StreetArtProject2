@@ -127,16 +127,16 @@ if (!$form_values_valid) {
                         <fieldset>
                             <legend>Contact</legend>
 
-                            <label for="nom">Nom:</label>
+                            <label for="nom">Nom :</label>
                             <input id="nom" class="form-control" type="text" placeholder="Nom" required name="nom"><br><br>
 
-                            <label for="prenom">Prenom:</label>
+                            <label for="prenom">Prenom :</label>
                             <input id="prenom" class="form-control" type="text" placeholder="Prenom" required name="prenom" ><br><br>
 
-                            <label for="email">Email:</label>
+                            <label for="email">Email :</label>
                             <input id="email" class="form-control" placeholder="Email" type="email" required name="email"><br><br>
 
-                            <label for="naissance">Date de naissance:</label>
+                            <label for="naissance">Date de naissance :</label>
                             <input id="naissance" class="form-control" type="date" required name="naissance"><br><br>
                         </fieldset>
 
