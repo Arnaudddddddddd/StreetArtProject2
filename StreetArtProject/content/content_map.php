@@ -17,7 +17,8 @@ echo <<<END
         function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(48.8786193, 2.3188043000000107),
-          zoom: 12
+          zoom: 12,
+          mapTypeId: 'hybrid',
         });
         var infoWindow = new google.maps.InfoWindow;
 
@@ -40,11 +41,11 @@ echo <<<END
                   '<br>'+'<img src="miniatures/mini_'+ name + id + '.jpg">';    
 
               
-              var icon = customLabel[type] || {};
+              var iconM = 'miniatures/mini_GmapsIcon.jpg';
               var marker = new google.maps.Marker({
                 map: map,
                 position: point,
-                label: icon.label
+                icon: iconM
               });
               marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);

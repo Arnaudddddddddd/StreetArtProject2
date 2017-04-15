@@ -207,6 +207,8 @@ function generateHTMLHeader($title,$style) {
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ5Dt9EU5yi6HzVkzsRU-W3RHbZDUKJCA&signed_in=true&callback=initMap">
         </script>
         <title>$title</title>
+        <!-- Google Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">     
         <!-- CSS Bootstrap -->
         <link  href="css/perso.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
