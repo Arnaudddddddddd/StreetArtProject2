@@ -68,13 +68,12 @@ $_POST['utilisateur'] = $_SESSION['login'];
 $form_values_valid = false;
 if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
-        isset($_POST["subAdresse"]) && $_POST["subAdresse"] != "" &&
         isset($_POST["lat"]) && $_POST["lat"] != "" &&
         isset($_POST["lng"]) && $_POST["lng"] != "" &&
         isset($_POST["description"]) && $_POST["description"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['subAdresse'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
+    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
     $id = $verif;
     if ($verif != 0) {
         $_POST['id'] = $id;
@@ -139,9 +138,6 @@ if (!$form_values_valid) {
 
                         <fieldset>
                             <legend>Emplacement de la photo</legend>
-
-                            <label for="subAdresse">Adresse</label>
-                            <input type="text" class="form-control" name="subAdresse" id="subAdresse" placeholder="Adresse" required><br><br>
 
                             <p><i>Utilisez le module de droite pour trouver vos coordonnées.</i></p>
 

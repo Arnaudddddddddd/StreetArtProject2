@@ -5,14 +5,13 @@ class Image {
     public $id;
     public $utilisateur;
     public $nom;
-    public $adresse;
     public $lat;
     public $lng;
     public $description;
 
-    public static function insererImage($dbh, $utilisateur, $nom, $adresse, $lat, $lng, $description) {
-        $sth = $dbh->prepare("INSERT INTO `images` (`utilisateur`, `nom`, `adresse`, `lat`, `lng`,`description`) VALUES(?,?,?,?,?,?)");
-        $sth->execute(array($utilisateur, htmlspecialchars($nom), $adresse, $lat, $lng, $description));
+    public static function insererImage($dbh, $utilisateur, $nom, $lat, $lng, $description) {
+        $sth = $dbh->prepare("INSERT INTO `images` (`utilisateur`, `nom`, `lat`, `lng`,`description`) VALUES(?,?,?,?,?)");
+        $sth->execute(array($utilisateur, htmlspecialchars($nom), $lat, $lng, $description));
         $id_nouveau = $dbh->lastInsertId();
         if ($sth->rowCount() > 0) {
             return $id_nouveau;
