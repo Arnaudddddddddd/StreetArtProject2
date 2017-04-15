@@ -27,9 +27,10 @@ CHAINE_DE_FIN;
 if($test and $delete){
     var_dump('ok');
     $verif = Image::supprimer($dbh, $_GET["iD"]);
-    unlink($link);
     if($verif){
         echo "<meta http-equiv='Refresh' content='1; URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
+        unlink($link);
+        unlink('miniatures/mini_'.$image.'.jpg');   
     }
 }
 
