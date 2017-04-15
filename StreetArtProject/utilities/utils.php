@@ -229,7 +229,6 @@ function generateHTMLHeader($title,$style) {
             padding: 0;
         }
         </style>
-        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
             
         <!-- CSS Perso -->
         <link rel="stylesheet" type="text/css" href=$style/>
@@ -239,7 +238,7 @@ function generateHTMLHeader($title,$style) {
         <link  href='unitegallery/css/unite-gallery.css' rel='stylesheet' type='text/css' />
 				
         <!-- include Unite Gallery Theme Files -->
-	<script src='unitegallery/themes/slider/ug-theme-slider.js' type='text/javascript'></script>
+	<!--script src='unitegallery/themes/slider/ug-theme-slider.js' type='text/javascript'></script-->
         <script src='unitegallery/themes/tiles/ug-theme-tiles.js' type='text/javascript'></script>
    </head>
     <body>

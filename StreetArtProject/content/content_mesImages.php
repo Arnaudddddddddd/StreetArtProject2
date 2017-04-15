@@ -12,9 +12,9 @@ if ($pageTitle == "Mes images") {
             foreach ($resultat as $name) {
                 //print($name);
                 echo <<<CHAINE_DE_FIN
-                    <a ref="http://google.fr">
+                    <a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo=$name&iD=9">
                         <img alt="$name"
-                            src="miniatures/mini_$name.jpg"
+                            src="images/$name.jpg"
                             data-image="images/$name.jpg"
                             data-description="This is $name"
                         >
@@ -27,10 +27,13 @@ CHAINE_DE_FIN;
                 <script type="text/javascript">
                     jQuery(document).ready(function () {
                         jQuery("#gallery1").unitegallery({
-                            gallery_theme: "tiles",
-                            tiles_type: "nested",
-                            tile_link_newpage:false,
-                            tile_show_link_icon: true
+                            tile_enable_image_effect:true,
+                            tile_image_effect_type: "sepia",
+                            tile_enable_overlay: true,
+                            tile_show_link_icon: true,
+                            tile_link_newpage: false,
+                            tiles_min_columns: 1,
+                            tiles_max_columns: 3
                         });
                     });
                 </script>
@@ -45,9 +48,9 @@ CHAINE_DE_FIN;
         echo '<div id="gallery1" style="margin:0px auto; display:none;">';
         foreach ($resultat as $name) {
             echo <<<CHAINE_DE_FIN
-                    <a ref="http://google.fr">
+                    <a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo=$name&iD=9">
                         <img alt="$name"
-                            src="miniatures/mini_$name.jpg"
+                            src="images/$name.jpg"
                             data-image="images/$name.jpg"
                             data-description="This is $name"
                         >
@@ -60,10 +63,13 @@ CHAINE_DE_FIN;
                 <script type="text/javascript">
                     jQuery(document).ready(function () {
                         jQuery("#gallery1").unitegallery({
-                            gallery_theme: "tiles",
-                            tiles_type: "nested",
-                            tile_link_newpage:false,
-                            tile_show_link_icon: true
+                            tile_enable_image_effect:true,
+                            tile_image_effect_type: "sepia",
+                            tile_enable_overlay: true,
+                            tile_show_link_icon: true,
+                            tile_link_newpage: false,
+                            tiles_min_columns: 1,
+                            tiles_max_columns: 3
                         });
                     });
                 </script>

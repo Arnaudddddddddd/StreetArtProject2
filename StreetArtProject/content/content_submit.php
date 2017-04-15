@@ -130,9 +130,9 @@ if (!$form_values_valid) {
                             <textarea type="text" class="form-control" name="description" id="description" placeholder="Décrivez votre photo" rows=10 COLS=50></textarea><br><br>
 
                             <label for="photo">Votre photo</label>
-                            <input type="hidden" class="form-control" name="MAX_FILE_SIZE" value="1048576" />
+                            <input type="hidden" class="form-control" name="MAX_FILE_SIZE" value="104857600" />
                             <input type="file" class="form-control" name="fichier"/><br>
-                            <strong>Taille du fichier limitée à 1 Mo</strong><br><br>
+                            <strong>Taille du fichier limitée à 1 Go</strong><br><br>
 
                         </fieldset>
 

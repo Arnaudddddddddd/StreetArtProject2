@@ -1,43 +1,43 @@
 <div id="gallery1" style="margin:0px auto; display:none;">
     <img alt="welcome01"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTWXpoQ3hfZGdoZWM"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTWXpoQ3hfZGdoZWM"
+         src="images/welcome01.png"
+         data-image="images/welcome01.png"
          data-description="This is welcome01"
          >
 
     <img alt="welcome02"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTLVE4WUNsQlJiMlU"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTLVE4WUNsQlJiMlU"
+         src="images/welcome02.jpg"
+         data-image="images/welcome02.jpg"
          data-description="This is welcome02"
          >
 
     <img alt="welcome03"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTVmE0SDZ0dVJocVU"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTVmE0SDZ0dVJocVU"
+         src="images/welcome03.jpg"
+         data-image="images/welcome03.jpg"
          data-description="This is welcome03"
          >
 
     <img alt="welcome04"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTSzY1SHV3anFyQWc"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTSzY1SHV3anFyQWc"
+         src="images/welcome04.jpg"
+         data-image="images/welcome04.jpg"
          data-description="This is welcome04"
          >
 
     <img alt="welcome05"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTTnpoa09ydUhuTkE"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTTnpoa09ydUhuTkE"
+         src="images/welcome05.jpg"
+         data-image="images/welcome05.jpg"
          data-description="This is welcome05"
          >
 
     <img alt="welcome06"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTLWtlYnU4Z1FIb00"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTLWtlYnU4Z1FIb00"
+         src="images/welcome06.jpg"
+         data-image="images/welcome06.jpg"
          data-description="This is welcome06"
          >
 
     <img alt="welcome07"
-         src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTanQ5QlU3a1FrSWs"
-         data-image="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTanQ5QlU3a1FrSWs"
+         src="images/welcome07.jpg"
+         data-image="images/welcome07.jpg"
          data-description="This is welcome07"
          >
 </div>
