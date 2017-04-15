@@ -33,8 +33,8 @@ class Image {
             return null;
         }
     }
-    
-     public static function supprimer($dbh, $id) {
+
+    public static function supprimer($dbh, $id) {
         $query = "DELETE FROM `images` WHERE `id`= $id";
         $sth = $dbh->prepare($query);
         $sth->execute();
@@ -44,8 +44,8 @@ class Image {
             return false;
         }
     }
-    
-    public static function estAUtilisateur($dbh, $utilisateur,$id) {
+
+    public static function estAUtilisateur($dbh, $utilisateur, $id) {
         $query = "SELECT * FROM `images` WHERE `id`='$id'";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
@@ -54,10 +54,9 @@ class Image {
 
         if ($sth->rowCount() > 0) {
             $verif = $picture->utilisateur;
-            if($verif==$utilisateur){
+            if ($verif == $utilisateur) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         } else {
@@ -106,24 +105,31 @@ class Image {
         }
     }
 
+    public static function getAllImages2($dbh) {
+        $reponse = "SELECT * FROM `images`";
+        $sth = $dbh->prepare($reponse);
+        $sth->execute();
+        while ($donnees = $sth->fetch()) {
+            $nomPhoto = $donnees['nom'] . $donnees['id'];
+            $idPhoto = $donnees['id'];
+            $res_aux = array(
+                "nom" => $nomPhoto,
+                "id" => $idPhoto
+            );
+            $res[] = $res_aux;
+        }
+        if (isset($res)) {
+            return $res;
+        }
+    }
+
     public static function getImageUtilisateur($dbh, $utilisateur) {
-//    $query = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
-//    $sth = $dbh->prepare($query);
-//    $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
-//    $sth->execute();
-//    $picture = $sth->fetch();
-//    $sth->closeCursor();
-//    if($sth->rowCount()>0){
-//        return $picture;
-//    }
-//    else{
-//        return null;
-//    }   
-// On récupère tout le contenu de la table
+        // On récupère tout le contenu de la table
         $reponse = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
         $sth = $dbh->prepare($reponse);
         $sth->execute();
-// On affiche chaque entrée une à une
+        $res = array();
+        // On affiche chaque entrée une à une
         while ($donnees = $sth->fetch()) {
             $nomPhoto = $donnees['nom'] . $donnees['id'];
             $array[] = $nomPhoto;
@@ -134,17 +140,40 @@ class Image {
         }
     }
 
-    public static function hauteurProportionnelle($image,$newLargeur){
+    public static function getImageUtilisateur2($dbh, $utilisateur) {
+        // On récupère tout le contenu de la table
+        $reponse = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
+        $sth = $dbh->prepare($reponse);
+        $sth->execute();
+        $res = array();
+        // On affiche chaque entrée une à une
+        while ($donnees = $sth->fetch()) {
+            $nomPhoto = $donnees['nom'] . $donnees['id'];
+            $idPhoto = $donnees['id'];
+            $res_aux = array(
+                "nom" => $nomPhoto,
+                "id" => $idPhoto
+            );
+            $res[] = $res_aux;
+        }
+        $sth->closeCursor(); // Termine le traitement de la requête
+        if (isset($res)) {
+            //var_dump($res);
+            return $res;
+        }
+    }
+
+    public static function hauteurProportionnelle($image, $newLargeur) {
         $id = $image->id;
         $nom = $image->nom;
         $adresse = "images/$nom$id.jpg";
         $source = imagecreatefromjpeg($adresse);
         $largeur = imagesx($source);
         $hauteur = imagesy($source);
-        $newhauteur = abs(($newLargeur/$largeur)*$hauteur);
+        $newhauteur = abs(($newLargeur / $largeur) * $hauteur);
         return $newhauteur;
     }
-    
+
     public static function createMiniature($name) {
         $source = imagecreatefromjpeg("images/$name.jpg"); // La photo est la source
         // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
