@@ -44,7 +44,6 @@ while ($row = @mysql_fetch_assoc($result)){
   echo '<marker ';
   echo 'id="' . $row['id']. '" ';
   echo 'nom="' . parseToXML($row['nom']) . '" ';
-  echo 'adresse="' . parseToXML($row['adresse']) . '" ';
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
   echo '/>';
