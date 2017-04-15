@@ -1,6 +1,6 @@
 <style>
     body{
-        background-image: url("https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTR2o1ZU1oUGpCWFU");
+        background-image: url("images/prewelcome.jpeg");
         background-position: center;
     }
     div.centre {
@@ -37,7 +37,7 @@
   <div class="container">
       <div class="col-md-13 text-center">
           <a class="btn" href="index.php?page=welcome" role="button">
-              <img src="https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTSng0eHFqQWxUZXM" alt="triangle" height="150">
+              <img src="images/triangletransp.png" alt="triangle" height="150">
           </a>
     </div>
   </div>

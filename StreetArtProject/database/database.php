@@ -16,10 +16,10 @@ class Database {
     }
 }
  
-function inserer($dbh,$login,$nom,$prenom,$mdp,$nb_photo,$email,$naissance){
+/*function inserer($dbh,$login,$nom,$prenom,$mdp,$nb_photo,$email,$naissance){
 $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `promotion`, `naissance`, `email`) VALUES(?,SHA1(?),?,?,?,?,?)");
 $sth->execute(array($login,$mdp,$nom,$prenom,$nb_photo,$naissance,$email));
-}
+}*/
 
 function tri($dbh,$colonne){
 $query = "SELECT * FROM `utilisateurs` WHERE `naissance` IS NOT NULL ORDER BY `$colonne`";
@@ -36,5 +36,4 @@ while ($courant =  $sth->fetch(PDO::FETCH_ASSOC)){
 //$sth->execute(array('SuperMarcel','Mystere','Marcel','Dupont','2005','1980-03-27','Marcel.Dupont@polytechnique.edu','modal.css'));
 // 
 //$dbh = null; // Déconnexion de MySQL
-?>
 
