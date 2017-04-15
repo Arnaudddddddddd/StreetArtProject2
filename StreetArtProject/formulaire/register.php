@@ -152,5 +152,11 @@ if (!$form_values_valid) {
     <br>
 </div>
     
+<nav class="navbar navbar-default navbar-bottom">
+  <div class="container">
+    Blabla
+  </div>
+</nav>
+    
 CHAINE_DE_FIN;
 }
