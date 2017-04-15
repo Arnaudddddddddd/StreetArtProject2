@@ -1,3 +1,9 @@
+<style>
+    body{
+        background-image: url('images/fondecranmotif.jpeg')
+    }
+</style>
+
 <?php
 
 $utilisateur = $_SESSION['login'];
@@ -26,7 +32,8 @@ CHAINE_DE_FIN;
             }
             echo <<<CHAINE_DE_FIN
                 </div>
-
+                <br><br><br>
+                
                 <script type="text/javascript">
                     jQuery(document).ready(function () {
                         jQuery("#gallery1").unitegallery({
@@ -63,7 +70,8 @@ CHAINE_DE_FIN;
             }
             echo <<<CHAINE_DE_FIN
                 </div>
-
+                <br><br><br>
+            
                 <script type="text/javascript">
                     jQuery(document).ready(function () {
                         jQuery("#gallery1").unitegallery({

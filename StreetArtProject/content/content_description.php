@@ -1,3 +1,9 @@
+<style>
+    body{
+        background-image: url('images/fondecranmotif.jpeg')
+    }
+</style>
+
 <?php
 
 $image = $_GET["todo"];
@@ -16,7 +22,6 @@ $test = Image::estAUtilisateur($dbh,$_SESSION['login'],$_GET["iD"]);
 if($test or $_SESSION['admin']==true){
         if(!$delete){
     echo <<<CHAINE_DE_FIN
-    
     <form class="form-inline" action="index.php?page=description&todo=$image&iD=$id&delete=true" method="post">
         <p><button type="submit" class="btn btn-default">Delete</button></p>
     

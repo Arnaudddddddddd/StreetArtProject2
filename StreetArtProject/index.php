@@ -1,5 +1,4 @@
 <?php
-
 session_name("SessionTest");
 // ne pas mettre d'espace dans le nom de session !
 session_start();
@@ -51,29 +50,29 @@ if ($authorized) {
 }
 
 //Génération du Header de la page
-generateHTMLHeader($pageTitle,"css/perso.css");
+generateHTMLHeader($pageTitle, $askedPage);
 
 //Affichage du contenu de la page
 if ($prewlcm) {
     // affichage de formulaires
-    /*if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
-        printLogoutForm();
-    } else {
-        printLoginForm($askedPage);
-    }*/
+    /* if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
+      printLogoutForm();
+      } else {
+      printLoginForm($askedPage);
+      } */
     generateMenuConnexion($askedPage);
     generateMenuGeneral();
     echo<<<END
             <div id="content">
                 <div>
 END;
-    
-    if(isset($_SESSION['admin']) and $_SESSION['admin']==true){
+
+    if (isset($_SESSION['admin']) and $_SESSION['admin'] == true) {
         echo<<<END
             <h2>Vous êtes un administrateur de ce site</h2>
 END;
-}
-        echo '</div>';
+    }
+    echo '</div>';
 
     if ($askedPage == 'changePassword') {
         require("formulaire/changePassword.php");
@@ -85,10 +84,12 @@ END;
                 require("formulaire/register.php");
             } else {
                 require("content/content_$askedPage.php");
-                        
             }
         }
     }
+
+    //generateMenuFooter();
+
     echo "</div>";
 }
 $dbh = null;
