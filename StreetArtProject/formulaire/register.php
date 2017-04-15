@@ -58,7 +58,7 @@
     }
 
     body{
-        background-image: url(https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTZ3VwMkdoUTl1RW8);
+        background-image: url("images/CollageStreetArt.jpeg");
     }
 </style>
 
