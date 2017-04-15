@@ -33,6 +33,40 @@ class Image {
             return null;
         }
     }
+    
+     public static function supprimer($dbh, $id) {
+        $query = "DELETE FROM `images` WHERE `id`= $id";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
+        $sth->execute();
+        $sth->fetch();
+
+        if ($sth->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static function estAUtilisateur($dbh, $utilisateur,$id) {
+        $query = "SELECT * FROM `images` WHERE `id`='$id'";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
+        $sth->execute();
+        $picture = $sth->fetch();
+
+        if ($sth->rowCount() > 0) {
+            $verif = $picture->utilisateur;
+            if($verif==$utilisateur){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } else {
+            return null;
+        }
+    }
 
     public static function getLastID($dbh) {
         $query = "SELECT * FROM `images` WHERE `nom`='$nom'";

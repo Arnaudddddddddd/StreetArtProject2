@@ -69,17 +69,18 @@ $form_values_valid = false;
 if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
         isset($_POST["lat"]) && $_POST["lat"] != "" &&
-        isset($_POST["lng"]) && $_POST["lng"] != "" &&
-        isset($_POST["description"]) && $_POST["description"] != "") {
+        isset($_POST["lng"]) && $_POST["lng"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['lat'], $_POST['lng'], $_POST['description'], 'style.css');
+    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['lat'], $_POST['lng'], $_POST['description']);
     $id = $verif;
-    if ($verif != 0) {
+    var_dump($verif);
+    if ($verif != 0 && isset($id)) {
         $_POST['id'] = $id;
         var_dump($_POST);
         $form_values_valid = true;
     }
+    
 
     // si le traitement réussit, on passe $form_value_valid à true
 
