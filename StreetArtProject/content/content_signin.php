@@ -54,20 +54,41 @@
 
     .centrage{
         text-align: center;
+        background-color: white;
     }
+
+    body{
+        background-image: url("images/CollageStreetArt.jpeg");
+    }
+
 </style>
 
-<div class="centrage">
-        <h2>Formulaire d'identification</h2>
-        <form class="form-inline" action="index.php?page=welcome&todo=login" method="post">
-            <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
-            <fieldset>
-                <legend>Identifiez-vous</legend>
-                <label for="exampleInputEmail3">Login</label>
-                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Login" name="login" required><br>
-                <label for="exampleInputPassword3">Password</label>
-                <input type="password" class="form-control" name="mdp" id="exampleInputPassword3" placeholder="Mot de passe" required><br>
-            </fieldset>
-            <p><button type="submit" class="btn btn-default">Sign in</button></p>
-        </form>
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Formulaire d'identification</h2>
+                    <form class="form-inline" action="index.php?page=welcome&todo=login" method="post">
+                        <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
+                        <fieldset>
+                            <legend>Identifiez-vous</legend>
+                            <label for="exampleInputEmail3">Login</label>
+                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Login" name="login" required><br>
+                            <label for="exampleInputPassword3">Password</label>
+                            <input type="password" class="form-control" name="mdp" id="exampleInputPassword3" placeholder="Mot de passe" required><br>
+                        </fieldset>
+                        <p><button type="submit" class="btn btn-default">Sign in</button></p>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<br>
 </div>

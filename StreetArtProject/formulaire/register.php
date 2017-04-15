@@ -54,6 +54,11 @@
 
     .centrage{
         text-align: center;
+        background-color: white;
+    }
+
+    body{
+        background-image: url(https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTZ3VwMkdoUTl1RW8);
     }
 </style>
 
@@ -92,44 +97,60 @@ if ($form_values_valid) {
 if (!$form_values_valid) {
     echo <<<CHAINE_DE_FIN
 
-<div class="centrage">
-    <h2>Inscrivez-vous</h2>
-    <form class="form-inline" action="index.php?page=register" method="post"
-          oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
-        <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class=""></div>
+            </div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Inscrivez-vous</h2>
+                    <form class="form-inline" action="index.php?page=register" method="post"
+                          oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
+                        <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
 
-        <fieldset>
-            <legend>Identifiants de connexion</legend>
+                        <fieldset>
+                            <legend>Identifiants de connexion</legend>
 
-            <label for="login">Login<em>*</em></label>
-            <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br><br>
+                            <label for="login">Login<em>*</em></label>
+                            <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br><br>
 
-            <label for="password1">Mot de passe<em>*</em></label>
-            <input type="password" class="form-control" name="up" id="password1" placeholder="Nouveau" required><br><br>
+                            <label for="password1">Mot de passe<em>*</em></label>
+                            <input type="password" class="form-control" name="up" id="password1" placeholder="Nouveau" required><br><br>
 
-            <label for="password2">Confirmation mot de passe<em>*</em></label>
-            <input type="password" class="form-control" name="up2" id="password2" placeholder="Confirmer" required><br>            
-        </fieldset>
+                            <label for="password2">Confirmation mot de passe<em>*</em></label>
+                            <input type="password" class="form-control" name="up2" id="password2" placeholder="Confirmer" required><br>            
+                        </fieldset>
 
-        <fieldset>
-            <legend>Contact</legend>
-            
-            <label for="nom">Nom:</label>
-            <input id="nom" class="form-control" type="text" placeholder="Nom" required name="nom"><br><br>
+                        <fieldset>
+                            <legend>Contact</legend>
 
-            <label for="prenom">Prenom:</label>
-            <input id="prenom" class="form-control" type="text" placeholder="Prenom" required name="prenom" ><br><br>
+                            <label for="nom">Nom:</label>
+                            <input id="nom" class="form-control" type="text" placeholder="Nom" required name="nom"><br><br>
 
-            <label for="email">Email:</label>
-            <input id="email" class="form-control" placeholder="Email" type="email" required name="email"><br><br>
-            
-            <label for="naissance">Date de naissance:</label>
-            <input id="naissance" class="form-control" type="date" required name="naissance"><br><br>
-        </fieldset>
+                            <label for="prenom">Prenom:</label>
+                            <input id="prenom" class="form-control" type="text" placeholder="Prenom" required name="prenom" ><br><br>
 
-        <p><button type="submit" class="btn btn-default">Bienvenue</button></p>
-        
-    </form>
+                            <label for="email">Email:</label>
+                            <input id="email" class="form-control" placeholder="Email" type="email" required name="email"><br><br>
+
+                            <label for="naissance">Date de naissance:</label>
+                            <input id="naissance" class="form-control" type="date" required name="naissance"><br><br>
+                        </fieldset>
+
+                        <p><button type="submit" class="btn btn-default">Bienvenue</button></p>
+
+                    </form>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <br>
 </div>
     
 CHAINE_DE_FIN;

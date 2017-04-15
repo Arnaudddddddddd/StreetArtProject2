@@ -57,38 +57,16 @@
         background-color: white;
     }
 
-    body{
+    .fondecran{
         background-image: url(https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTZ3VwMkdoUTl1RW8);
     }
+
 </style>
 
 <?php
-$change_Password = false;
-
-
-//var_dump($_POST);
-if (isset($_POST["login"]) && $_POST["login"] != "" &&
-        isset($_POST["up0"]) && $_POST["up0"] != "" &&
-        isset($_POST["up"]) && $_POST["up"] != "" &&
-        isset($_POST["up2"]) && $_POST["up2"] != "") {
-    $dbh = Database::connect();
-    $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
-    $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up0"]);
-    if ($test != null && $test1 != 0) {
-        $sth = $dbh->prepare("UPDATE `utilisateurs` SET mdp='" . SHA1($_POST['up']) . "' WHERE login = '" . $_POST['login'] . "'");
-        $sth->execute();
-        $change_Password = true;
-    }
-    $dbh = null;
-}
-
-if ($change_Password == true) {
-    echo "<div>Changement de mot de passe réussi</div>";
-}
-
-if (!$change_Password) {
-    echo <<<CHAINE_DE_FIN
-
+require 'utilities/utils.php';
+generateHTMLHeader('test', 'perso');
+?>
 <div class="fondecran">
     <br>
     <div class="container">
@@ -124,5 +102,4 @@ if (!$change_Password) {
     </div>
     <br>
 </div>
-CHAINE_DE_FIN;
-}
+</body>

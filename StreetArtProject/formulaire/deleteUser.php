@@ -54,6 +54,11 @@
 
     .centrage{
         text-align: center;
+        background-color: white;
+    }
+
+    body{
+        background-image: url(https://drive.google.com/uc?export=view&id=0B2ykXhK03XtTZ3VwMkdoUTl1RW8);
     }
 </style>
 
@@ -83,23 +88,39 @@ if ($change_Password) {
 if (!$change_Password) {
     echo <<<CHAINE_DE_FIN
 
-<div class="centrage">
-    <h2>Supprimer votre compte</h2>
-    <form class="form-inline" action="index.php?page=deleteUser" method="post"
-          oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
-        <p>
-            <i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em><br>
-            Cette action est définitive.
-        </p><br>
-        <fieldset>
-            <legend>Supprimez votre compte</legend>
-            <label for="login">Login<em>*</em></label>
-            <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br>
-            <label for="password0">Mot de passe<em>*</em></label>
-            <input type="password" class="form-control" name="up" id="password0" placeholder="Ancien" required><br>
-        </fieldset>
-        <p><button type="submit" class="btn btn-default">Au revoir</button></p>
-    </form>
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class=""></div>
+            </div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Supprimer votre compte</h2>
+                    <form class="form-inline" action="index.php?page=deleteUser" method="post"
+                          oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
+                        <p>
+                            <i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em><br>
+                            Cette action est définitive.
+                        </p><br>
+                        <fieldset>
+                            <legend>Supprimez votre compte</legend>
+                            <label for="login">Login<em>*</em></label>
+                            <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br>
+                            <label for="password0">Mot de passe<em>*</em></label>
+                            <input type="password" class="form-control" name="up" id="password0" placeholder="Ancien" required><br>
+                        </fieldset>
+                        <p><button type="submit" class="btn btn-default">Au revoir</button></p>
+                    </form>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <br>
 </div>
     
 CHAINE_DE_FIN;
