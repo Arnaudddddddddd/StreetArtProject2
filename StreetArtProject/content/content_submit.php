@@ -74,11 +74,11 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
     $dbh = Database::connect();
     $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['lat'], $_POST['lng'], $_POST['description']);
     $id = $verif;
-    var_dump($verif);
     if ($verif != 0 && isset($id)) {
         $_POST['id'] = $id;
-        var_dump($_POST);
         $form_values_valid = true;
+        echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=mesImages'>";
+
     }
     
 
@@ -96,7 +96,6 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 // JPEG => type=2
     if ($type == 2) {
         if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'] . $_POST['id'] . '.jpg')) {
-            echo "Copie réussie";
             $name = $_POST['nom'] . $_POST['id'];
             Image::createMiniature($name);
         } else {
