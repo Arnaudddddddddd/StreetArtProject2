@@ -5,9 +5,7 @@ class Utilisateur {
     public $nom;
     public $prenom;
     public $naissance;
-    public $promotion;
     public $email;
-    public $feuille;
  
     public function __toString() {
         return "[".$this->login."]"." ".$this->prenom." "."<b>".$this->nom."</b> né le ".explode('-',$this->naissance)[2].'/'.explode('-',$this->naissance)[1].'/'.explode('-',$this->naissance)[0]." <b>".$this->email."</b>";
@@ -28,9 +26,9 @@ class Utilisateur {
     }
     }
     
-    public static function insererUtilisateur($dbh,$login,$nom,$prenom,$mdp,$promotion,$email,$naissance,$feuille){
-    $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `promotion`, `naissance`, `email`, `feuille`) VALUES(?,SHA1(?),?,?,?,?,?,?)");
-    $sth->execute(array($login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille));
+    public static function insererUtilisateur($dbh,$login,$nom,$prenom,$mdp,$email,$naissance){
+    $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `naissance`, `email`) VALUES(?,SHA1(?),?,?,?,?)");
+    $sth->execute(array($login,$mdp,$nom,$prenom,$naissance,$email));
     if($sth->rowCount()>0){
         return true;
     }

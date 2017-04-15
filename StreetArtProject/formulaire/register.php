@@ -63,7 +63,6 @@ $form_values_valid = false;
 
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["email"]) && $_POST["email"] != "" &&
-        isset($_POST["promotion"]) && $_POST["promotion"] != "" &&
         isset($_POST["naissance"]) && $_POST["naissance"] != "" &&
         isset($_POST["email"]) && $_POST["email"] != "" &&
         isset($_POST["nom"]) && $_POST["nom"] != "" &&
@@ -74,7 +73,7 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     $dbh = Database::connect();
     $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
     if ($test == null && $_POST["up"] == $_POST["up2"]) {
-        $verif = Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['promotion'], $_POST['email'], $_POST['naissance'], 'style.css');
+        $verif = Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['email'], $_POST['naissance']);
 
         if ($verif) {
             $form_values_valid = true;
