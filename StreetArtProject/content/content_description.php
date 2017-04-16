@@ -120,11 +120,12 @@ echo <<<CHAINE_DE_FIN
 CHAINE_DE_FIN;
 
 //Si c'est l'image de l'utilisateur, et qu'il a demandé à la supprimer, on lance le php
-if ($test and $delete) {
+if ($test or $_SESSION['admin'] == true){ 
+    if($delete) {
     $verif = Image::supprimer($dbh, $_GET["iD"]);
     if ($verif) {
         echo "<meta http-equiv='Refresh' content='1; URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
         unlink($link);
         unlink('miniatures/mini_' . $image . '.jpg');
-    }
+    }}
 }
