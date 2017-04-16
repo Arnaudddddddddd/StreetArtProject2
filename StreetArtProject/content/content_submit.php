@@ -55,6 +55,9 @@
     .centrage{
         text-align: center;
         background-color: white;
+        background-image: url("images/fondecranmotif.jpeg");
+        border: 3px black double;
+        border-radius: 10px;
     }
 
     body{
@@ -76,13 +79,31 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
     $id = $verif;
     if ($verif != 0 && isset($id)) {
         $_POST['id'] = $id;
-        $form_values_valid = true;
+        $form_values_valid = true; // si le traitement réussit, on passe $form_value_valid à true
+        echo <<<CHAINE_DE_FIN
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Image uploadée</h2>
+                        <p><i>Votre image a bien été uploadée !!</i></p><br>
+                        <p>Vous allez être redirigé vers votre gallerie d'images.<p>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <br>
+</div>
+CHAINE_DE_FIN;
         echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=mesImages'>";
 
     }
-    
-
-    // si le traitement réussit, on passe $form_value_valid à true
 
     $dbh = null;
 }

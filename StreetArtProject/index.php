@@ -54,25 +54,18 @@ generateHTMLHeader($pageTitle, $askedPage);
 
 //Affichage du contenu de la page
 if ($prewlcm) {
-    // affichage de formulaires
-    /* if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
-      printLogoutForm();
-      } else {
-      printLoginForm($askedPage);
-      } */
-    generateMenuConnexion($askedPage);
-    generateMenuGeneral();
-    echo<<<END
-            <div id="content">
-                <div>
-END;
-
+    $adm = false;
     if (isset($_SESSION['admin']) and $_SESSION['admin'] == true) {
-        echo<<<END
-            <h2>Vous êtes un administrateur de ce site</h2>
-END;
+        $adm = true;
     }
-    echo '</div>';
+    
+    //Génération des menus
+    generateMenuConnexion($askedPage);
+    generateMenuGeneral($adm);
+    
+    echo<<<CHAINE_DE_FIN
+            <div id="content">
+CHAINE_DE_FIN;
 
     if ($askedPage == 'changePassword') {
         require("formulaire/changePassword.php");

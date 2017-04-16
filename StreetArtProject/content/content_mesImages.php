@@ -1,21 +1,29 @@
 <style>
+    p {
+        margin-top: 0px;
+    }
+
+    .centrage{
+        text-align: center;
+        background-color: white;
+    }
+
     body{
         background-image: url('images/fondecranmotif.jpeg')
     }
 </style>
 
 <?php
-
 $utilisateur = $_SESSION['login'];
 global $pageTitle;
 if ($pageTitle == "Mes images") {
     if ($_SESSION['admin'] == false) {
         $resultat = Image::getImageUtilisateur2($dbh, $utilisateur);
         //var_dump($resultat);
-        if (isset($resultat)) {
+        if ($resultat!=null) {
             //var_dump($resultat);
             echo '<div id="gallery1" style="margin:0px auto; display:none;">';
-            foreach ($resultat as $res_aux){
+            foreach ($resultat as $res_aux) {
                 //var_dump($res_aux);
                 $name = $res_aux["nom"];
                 $id = $res_aux["id"];
@@ -46,19 +54,38 @@ CHAINE_DE_FIN;
                 </script>
 CHAINE_DE_FIN;
         } else {
-            echo "<div>Vous n'avez pas soumis de photos</div>";
+            echo <<<CHAINE_DE_FIN
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Aucune image à afficher</h2>
+                        <h3>Désolé, vous n'avez aucune image</h3>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <br>
+</div>
+CHAINE_DE_FIN;
         }
     }
     if ($_SESSION['admin'] == true) {
         $resultat = Image::getAllImages2($dbh);
         //var_dump($resultat);
         echo '<div id="gallery1" style="margin:0px auto; display:none;">';
-        foreach ($resultat as $res_aux){
-                //var_dump($res_aux);
-                $name = $res_aux["nom"];
-                $id = $res_aux["id"];
-                //print_r($id);
-                echo <<<CHAINE_DE_FIN
+        foreach ($resultat as $res_aux) {
+            //var_dump($res_aux);
+            $name = $res_aux["nom"];
+            $id = $res_aux["id"];
+            //print_r($id);
+            echo <<<CHAINE_DE_FIN
                     <a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo=$name&iD=$id">
                         <img alt="$name"
                             src="images/$name.jpg"
@@ -67,8 +94,8 @@ CHAINE_DE_FIN;
                         >
                     </a>
 CHAINE_DE_FIN;
-            }
-            echo <<<CHAINE_DE_FIN
+        }
+        echo <<<CHAINE_DE_FIN
                 </div>
                 <br><br><br>
             

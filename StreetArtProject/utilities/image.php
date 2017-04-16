@@ -120,6 +120,8 @@ class Image {
         }
         if (isset($res)) {
             return $res;
+        } else {
+            return null;
         }
     }
 

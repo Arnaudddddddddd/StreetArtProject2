@@ -55,6 +55,9 @@
     .centrage{
         text-align: center;
         background-color: white;
+        background-image: url("images/fondecranmotif.jpeg");
+        border: 3px black double;
+        border-radius: 10px;
     }
 
     body{
@@ -82,6 +85,7 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
 
         if ($verif) {
             $form_values_valid = true;
+            //echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=signin'>";
         }
     }
     // si le traitement réussit, on passe $form_value_valid à true
@@ -90,8 +94,28 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
 }
 
 if ($form_values_valid) {
-    echo "Nous avons bien enregistré votre compte. Bienvenue !!";
-}
+    echo <<<CHAINE_DE_FIN
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Inscription réussie</h2>
+                        <p><i>Votre compte a bien été créé !!</i></p><br>
+                        <p>Vous pouvez vous identifier maintenant.<p>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <br>
+</div>
+CHAINE_DE_FIN;
+    }
 
 if (!$form_values_valid) {
     echo <<<CHAINE_DE_FIN

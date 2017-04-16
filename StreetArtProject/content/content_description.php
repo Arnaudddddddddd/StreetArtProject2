@@ -1,57 +1,130 @@
 <style>
+    p {
+        margin-top: 0px;
+    }
+
+    fieldset {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    legend {
+        padding: 0px 3px;
+        font-weight: bold;
+        font-variant: small-caps;
+    }
+
+    label {
+        width: 110px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 6px;
+    }
+
+    em {
+        font-weight: bold;
+        font-style: normal;
+        color: #f00;
+    }
+
+    input:focus {
+        background: #eaeaea;
+    }
+
+    input, textarea {
+        width: 249px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    select {
+        width: 254px;
+    }
+
+    input[type=checkbox] {
+        width: 10px;
+    }
+
+    input[type=submit] {
+        width: 150px;
+        padding: 10px;
+    }
+
+    .centrage{
+        text-align: center;
+        background-color: white;
+        background-image: url("images/fondecranmotif.jpeg");
+    }
+
     body{
         background-image: url('images/fondecranmotif.jpeg')
     }
 </style>
 
 <?php
-
 $image = $_GET["todo"];
-$link = "images/".$image.".jpg";
-$id=$_GET["iD"];
-$resultat = Image::getImageId($dbh,$_GET["iD"]);
-if(isset($_GET['delete'])){
-    $delete=$_GET['delete'];
+$link = "images/" . $image . ".jpg";
+$id = $_GET["iD"];
+$resultat = Image::getImageId($dbh, $_GET["iD"]);
+if (isset($_GET['delete'])) {
+    $delete = $_GET['delete'];
+} else {
+    $delete = false;
 }
-else{
-    $delete=false;
-}
-$test = Image::estAUtilisateur($dbh,$_SESSION['login'],$_GET["iD"]);         
+$test = Image::estAUtilisateur($dbh, $_SESSION['login'], $_GET["iD"]);
 
-//Si c'est l'image de l'utilisateur, on affiche un bouton pour supprimer la photo
-if($test or $_SESSION['admin']==true){
-        if(!$delete){
+if (!$delete) { //La photo ne peut pas être supprimée
+    $largeur = 600;
+    $hauteur = Image::hauteurProportionnelle($resultat, $largeur);
     echo <<<CHAINE_DE_FIN
-    <form class="form-inline" action="index.php?page=description&todo=$image&iD=$id&delete=true" method="post">
-        <p><button type="submit" class="btn btn-default">Delete</button></p>
-    
+<div class="fondecran">
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <br>
+                <img src=$link width=$largeur px height=$hauteur px/>
+            </div>
+
+            <div class="col-md-5">
+                <br>
+                <div class="col-md-10 col-md-offset-2" style="text-align:left">
+                    <h1>$resultat->nom</h1>
+                    <h3><i>Utilisateur: $resultat->utilisateur</i><h3>
+                    <h4 style="text-align : justify; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif">
+                        $resultat->description
+                    </h4>
+                </div>
+            </div>
 CHAINE_DE_FIN;
 }
-}
-//Si c'est l'image de l'utilisateur, et qu'il a demandé à la supprimer, on lance le php
-if($test and $delete){
-    $verif = Image::supprimer($dbh, $_GET["iD"]);
-    if($verif){
-        echo "<meta http-equiv='Refresh' content='1; URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
-        unlink($link);
-        unlink('miniatures/mini_'.$image.'.jpg');   
+
+//Si c'est l'image de l'utilisateur, on affiche un bouton pour supprimer la photo
+if ($test or $_SESSION['admin'] == true) {
+    if (!$delete) {
+        echo <<<CHAINE_DE_FIN
+            <div class="col-md-2" style="text-align: center">
+                <form class="form-inline" action="index.php?page=description&todo=$image&iD=$id&delete=true" method="post">
+                    <br><br><p><button type="submit" class="btn btn-danger">Supprimer la photo</button></p></form>
+            </div>
+CHAINE_DE_FIN;
     }
 }
-if(!$delete){
-echo <<<END
-<table>
-    <tr>
-        <td>
-END;
-$largeur = 600;
-$hauteur = Image::hauteurProportionnelle($resultat, $largeur);
-         print '<img src="'.$link.'" width="$'.$largeur.'px" height="'.$hauteur.'px"/>';
 
-echo "         
-        </td>
-        <td style='padding-left:20px;'>
-            <strong>".$resultat->nom."</strong>
-            <div>Utilisateur: ".$resultat->utilisateur."</div><br>
-            <div>".$resultat->description."</div>";  
+echo <<<CHAINE_DE_FIN
+        </div>
+    </div>
+</div>
+CHAINE_DE_FIN;
+
+//Si c'est l'image de l'utilisateur, et qu'il a demandé à la supprimer, on lance le php
+if ($test and $delete) {
+    $verif = Image::supprimer($dbh, $_GET["iD"]);
+    if ($verif) {
+        echo "<meta http-equiv='Refresh' content='1; URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
+        unlink($link);
+        unlink('miniatures/mini_' . $image . '.jpg');
+    }
 }
-

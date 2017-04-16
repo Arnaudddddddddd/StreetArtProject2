@@ -55,6 +55,9 @@
     .centrage{
         text-align: center;
         background-color: white;
+        background-image: url("images/fondecranmotif.jpeg");
+        border: 3px black double;
+        border-radius: 10px;
     }
 
     body{

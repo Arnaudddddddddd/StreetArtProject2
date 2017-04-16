@@ -1,4 +1,5 @@
 <?php
+
 require_once 'printForms.php';
 
 $page_list = array(
@@ -159,7 +160,7 @@ CHAINE_DE_FIN;
 CHAINE_DE_FIN;
 }
 
-function generateMenuGeneral() {
+function generateMenuGeneral($adm) {
 //        <!-- Collect the nav links, forms, and other content for toggling -->
     echo <<<CHAINE_DE_FIN
 <nav class="navbar navbar-default navbar-static-top">
@@ -172,6 +173,11 @@ function generateMenuGeneral() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+CHAINE_DE_FIN;
+    if($adm){
+      echo '<a class="navbar-brand" href="#">Vous êtes administrateur</a>';
+    }
+    echo <<<CHAINE_DE_FIN
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -225,11 +231,11 @@ function generateMenuFooter() {
 CHAINE_DE_FIN;
 }
 
-function getUnitegalleryFromPage($askedPage){
+function getUnitegalleryFromPage($askedPage) {
     global $page_list;
-    $res="";
-    foreach($page_list as $page){
-        if($page["name"]==$askedPage){
+    $res = "";
+    foreach ($page_list as $page) {
+        if ($page["name"] == $askedPage) {
             $res = $page["unitegallery"];
         }
     }
