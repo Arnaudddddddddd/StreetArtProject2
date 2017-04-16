@@ -2,56 +2,45 @@
     p {
         margin-top: 0px;
     }
-
     fieldset {
         margin-bottom: 15px;
         padding: 10px;
     }
-
     legend {
         padding: 0px 3px;
         font-weight: bold;
         font-variant: small-caps;
     }
-
     label {
         width: 110px;
         display: inline-block;
         vertical-align: top;
         margin: 6px;
     }
-
     em {
         font-weight: bold;
         font-style: normal;
         color: #f00;
     }
-
     input:focus {
         background: #eaeaea;
     }
-
     input, textarea {
         width: 249px;
     }
-
     textarea {
         height: 100px;
     }
-
     select {
         width: 254px;
     }
-
     input[type=checkbox] {
         width: 10px;
     }
-
     input[type=submit] {
         width: 150px;
         padding: 10px;
     }
-
     .centrage{
         text-align: center;
         background-color: white;
@@ -59,17 +48,14 @@
         border: 3px black double;
         border-radius: 10px;
     }
-
     body{
         background-image: url("images/CollageStreetArt.jpeg");
     }
-
 </style>
 
 <?php
 $connect = false;
 //var_dump($connect);
-
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["mdp"]) && $_POST["mdp"] != "" ) {
     $dbh = Database::connect();
@@ -78,11 +64,9 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     if ($test != null && $test1) {
         $connect = true;
         echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
-
     }
     $dbh = null;
 }
-
 if ($connect) {
         echo <<<CHAINE_DE_FIN
 <div class="fondecran">
@@ -104,10 +88,8 @@ if ($connect) {
 </div>
 CHAINE_DE_FIN;
 }
-
 if (!$connect) {
     echo <<<CHAINE_DE_FIN
-
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
