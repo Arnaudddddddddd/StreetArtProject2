@@ -104,7 +104,7 @@ function getPageTitle($nom) {
 function generateMenuConnexion($askedPage) {
 //        <!-- Collect the nav links, forms, and other content for toggling -->
     echo <<<CHAINE_DE_FIN
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -196,7 +196,7 @@ CHAINE_DE_FIN;
 function generateMenuGeneral($adm) {
 //        <!-- Collect the nav links, forms, and other content for toggling -->
     echo <<<CHAINE_DE_FIN
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
