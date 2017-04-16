@@ -29,6 +29,7 @@ echo <<<END
             Array.prototype.forEach.call(markers, function(markerElem) {
               var id = markerElem.getAttribute('id');
               var name = markerElem.getAttribute('nom');
+              var utilisateur = markerElem.getAttribute('utilisateur');
               var type = markerElem.getAttribute('type');
               var point = new google.maps.LatLng(
                   parseFloat(markerElem.getAttribute('lat')),
@@ -36,7 +37,7 @@ echo <<<END
 
               var infowincontent = '<strong>'+name+'</strong>'+'<br>'+'<br>'+
                   '<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+id+'&iD='+id+'">'+'Voir'+'</a>'+
-                  '<br>'+'<img src="miniatures/mini_'+ name + id + '.jpg">';    
+                  '<br>'+'<img src="miniatures/mini_'+ utilisateur + id + '.jpg">';    
               var marker = new google.maps.Marker({
                 map: map,
                 position: point,

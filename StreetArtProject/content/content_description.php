@@ -65,9 +65,10 @@
 
 <?php
 $image = $_GET["todo"];
-$link = "images/" . $image . ".jpg";
 $id = $_GET["iD"];
 $resultat = Image::getImageId($dbh, $_GET["iD"]);
+$utilisateur = $resultat -> utilisateur;
+$link = "images/" . $utilisateur.$id . ".jpg";
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
 } else {

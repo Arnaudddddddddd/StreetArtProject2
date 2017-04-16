@@ -110,7 +110,7 @@ class Image {
         $sth = $dbh->prepare($reponse);
         $sth->execute();
         while ($donnees = $sth->fetch()) {
-            $nomPhoto = $donnees['nom'] . $donnees['id'];
+            $nomPhoto = $donnees['utilisateur'] . $donnees['id'];
             $idPhoto = $donnees['id'];
             $res_aux = array(
                 "nom" => $nomPhoto,
@@ -133,7 +133,7 @@ class Image {
         $res = array();
         // On affiche chaque entrée une à une
         while ($donnees = $sth->fetch()) {
-            $nomPhoto = $donnees['nom'] . $donnees['id'];
+            $nomPhoto = $donnees['utilisateur'] . $donnees['id'];
             $array[] = $nomPhoto;
         }
         $sth->closeCursor(); // Termine le traitement de la requête
@@ -150,7 +150,7 @@ class Image {
         $res = array();
         // On affiche chaque entrée une à une
         while ($donnees = $sth->fetch()) {
-            $nomPhoto = $donnees['nom'] . $donnees['id'];
+            $nomPhoto = $donnees['utilisateur'] . $donnees['id'];
             $idPhoto = $donnees['id'];
             $res_aux = array(
                 "nom" => $nomPhoto,
@@ -167,8 +167,8 @@ class Image {
 
     public static function hauteurProportionnelle($image, $newLargeur) {
         $id = $image->id;
-        $nom = $image->nom;
-        $adresse = "images/$nom$id.jpg";
+        $utilisateur = $image->utilisateur;
+        $adresse = "images/$utilisateur$id.jpg";
         $source = imagecreatefromjpeg($adresse);
         $largeur = imagesx($source);
         $hauteur = imagesy($source);

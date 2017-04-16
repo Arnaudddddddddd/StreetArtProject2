@@ -116,8 +116,8 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 //    echo $larg . " " . $haut . " " . $type . " " . $attr;
 // JPEG => type=2
     if ($type == 2) {
-        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['nom'] . $_POST['id'] . '.jpg')) {
-            $name = $_POST['nom'] . $_POST['id'];
+        if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['utilisateur'] . $_POST['id'] . '.jpg')) {
+            $name = $_POST['utilisateur'] . $_POST['id'];
             Image::createMiniature($name);
         } else {
             echo "Echec de la copie";
