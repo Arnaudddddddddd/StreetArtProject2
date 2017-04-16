@@ -45,7 +45,7 @@
         text-align: center;
         background-color: white;
         background-image: url("images/fondecranmotif.jpeg");
-        border: 3px black double;
+        border: 3px black groove;
         border-radius: 10px;
     }
     body{
