@@ -285,9 +285,7 @@ function generateHTMLHeader($title, $askedPage) {
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/perso.js"></script>
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ5Dt9EU5yi6HzVkzsRU-W3RHbZDUKJCA&signed_in=true&callback=initMap">
-        </script>
+
         
         <title>Street Art Project</title>
         
