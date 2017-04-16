@@ -37,9 +37,6 @@ echo <<<END
               var infowincontent = '<strong>'+name+'</strong>'+'<br>'+'<br>'+
                   '<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+id+'&iD='+id+'">'+'Voir'+'</a>'+
                   '<br>'+'<img src="miniatures/mini_'+ name + id + '.jpg">';    
-
-              
-              
               var marker = new google.maps.Marker({
                 map: map,
                 position: point,

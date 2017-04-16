@@ -21,10 +21,10 @@ class Image {
     }
 
     public static function getImageId($dbh, $id) {
-        $query = "SELECT * FROM `images` WHERE `id`='$id'";
+        $query = "SELECT * FROM `images` WHERE `id`=?";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
-        $sth->execute();
+        $sth->execute(array($id));
         $picture = $sth->fetch();
 
         if ($sth->rowCount() > 0) {
@@ -35,9 +35,9 @@ class Image {
     }
 
     public static function supprimer($dbh, $id) {
-        $query = "DELETE FROM `images` WHERE `id`= $id";
+        $query = "DELETE FROM `images` WHERE `id`=?";
         $sth = $dbh->prepare($query);
-        $sth->execute();
+        $sth->execute(array($id));
         if ($sth->rowCount() > 0) {
             return true;
         } else {
@@ -46,10 +46,10 @@ class Image {
     }
 
     public static function estAUtilisateur($dbh, $utilisateur, $id) {
-        $query = "SELECT * FROM `images` WHERE `id`='$id'";
+        $query = "SELECT * FROM `images` WHERE `id`=?";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
-        $sth->execute();
+        $sth->execute(array($id));
         $picture = $sth->fetch();
 
         if ($sth->rowCount() > 0) {
@@ -65,10 +65,10 @@ class Image {
     }
 
     public static function getLastID($dbh) {
-        $query = "SELECT * FROM `images` WHERE `nom`='$nom'";
+        $query = "SELECT * FROM `images` WHERE `nom`=?";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
-        $sth->execute();
+        $sth->execute(array($nom));
         $picture = $sth->fetch();
 
         if ($sth->rowCount() > 0) {
@@ -79,10 +79,10 @@ class Image {
     }
 
     public static function getId($dbh, $nom) {
-        $query = "SELECT * FROM `images` WHERE `nom`='$nom'";
+        $query = "SELECT * FROM `images` WHERE `nom`=?";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Image');
-        $sth->execute();
+        $sth->execute(array($nom));
         $picture = $sth->fetch();
 
         if ($sth->rowCount() > 0) {
@@ -127,9 +127,9 @@ class Image {
 
     public static function getImageUtilisateur($dbh, $utilisateur) {
         // On récupère tout le contenu de la table
-        $reponse = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
+        $reponse = "SELECT * FROM `images` WHERE `utilisateur`=?";
         $sth = $dbh->prepare($reponse);
-        $sth->execute();
+        $sth->execute(array($utilisateur));
         $res = array();
         // On affiche chaque entrée une à une
         while ($donnees = $sth->fetch()) {
@@ -144,9 +144,9 @@ class Image {
 
     public static function getImageUtilisateur2($dbh, $utilisateur) {
         // On récupère tout le contenu de la table
-        $reponse = "SELECT * FROM `images` WHERE `utilisateur`='$utilisateur'";
+        $reponse = "SELECT * FROM `images` WHERE `utilisateur`=?";
         $sth = $dbh->prepare($reponse);
-        $sth->execute();
+        $sth->execute(array($utilisateur));
         $res = array();
         // On affiche chaque entrée une à une
         while ($donnees = $sth->fetch()) {

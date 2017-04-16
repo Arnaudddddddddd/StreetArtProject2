@@ -75,6 +75,10 @@ if (isset($_GET['delete'])) {
 }
 $test = Image::estAUtilisateur($dbh, $_SESSION['login'], $_GET["iD"]);
 
+//$nomAvecEspace = $resultat -> nom;
+//$nomSansEspace = str_replace(' ','_',$nomAvecEspace);
+//var_dump($nomSansEspace);
+
 if (!$delete) { //La photo ne peut pas être supprimée
     $largeur = 600;
     $hauteur = Image::hauteurProportionnelle($resultat, $largeur);
