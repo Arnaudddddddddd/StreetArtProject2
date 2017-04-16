@@ -68,8 +68,6 @@
 <?php
 $change_Password = false;
 
-
-var_dump($_POST);
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up0"]) && $_POST["up0"] != "" &&
         isset($_POST["up1"]) && $_POST["up1"] != "" &&
@@ -77,18 +75,36 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     $dbh = Database::connect();
     $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
     $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up0"]);
-    var_dump($test);
-    var_dump($test1);
-    if ($test != null && $test1 != 0) {
+    if ($test != null && $test1) {
         $sth = $dbh->prepare("UPDATE `utilisateurs` SET mdp=? WHERE login =? ");
         $sth->execute(array(SHA1($_POST['up1']),$_POST['login']));
         $change_Password = true;
+        echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
+
     }
     $dbh = null;
 }
 
 if ($change_Password == true) {
-    echo "<div>Changement de mot de passe réussi</div>";
+        echo <<<CHAINE_DE_FIN
+<div class="fondecran">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="centrage">
+                    <br>
+                    <h2>Votre mot de passe a été changé</h2>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <br>
+</div>
+CHAINE_DE_FIN;
 }
 
 if (!$change_Password) {
@@ -104,6 +120,16 @@ if (!$change_Password) {
             <div class="col-md-6">
                 <div class="centrage">
                     <br>
+CHAINE_DE_FIN;
+    if(!isset($test) && isset($test1)){
+        echo "<em>Le login que vous avez rentré n'existe pas</em>";
+    }
+    else{
+    if(isset($test1) && !$test1){
+                echo '<em>Le mot de passe rentré est faux</em>';
+    }}
+echo <<<CHAINE_DE_FIN
+    
                     <h2>Changer le mot de passe</h2>
                     <form class="form-inline" action="index.php?page=changePassword" method="post"
                           oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
