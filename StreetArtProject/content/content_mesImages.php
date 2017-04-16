@@ -14,11 +14,11 @@
 </style>
 
 <?php
-$utilisateur = $_SESSION['login'];
+$utilisateur = htmlspecialchars($_SESSION['login']);
 global $pageTitle;
 if ($pageTitle == "Mes images") {
     if ($_SESSION['admin'] == false) {
-        $resultat = Image::getImageUtilisateur2($dbh, $utilisateur);
+        $resultat = htmlspecialchars(Image::getImageUtilisateur2($dbh, $utilisateur));
         //var_dump($resultat);
         if ($resultat!=null) {
             //var_dump($resultat);
@@ -77,7 +77,7 @@ CHAINE_DE_FIN;
         }
     }
     if ($_SESSION['admin'] == true) {
-        $resultat = Image::getAllImages2($dbh);
+        $resultat = htmlspecialchars(Image::getAllImages2($dbh));
         //var_dump($resultat);
         echo '<div id="gallery1" style="margin:0px auto; display:none;">';
         foreach ($resultat as $res_aux) {

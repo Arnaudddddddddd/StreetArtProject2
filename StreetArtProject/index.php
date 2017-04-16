@@ -37,16 +37,16 @@ $prewlcm = TRUE;
 if (!isset($_GET['page'])) {
     require('content/content_prewelcome.php');
     $prewlcm = FALSE; // Mettre cette variable à True pour travailler sans la page de pré-accueil
-    $_GET['page'] = 'welcome';
+    $_GET['page'] = htmlspecialchars('welcome');
 }
 
 //Verification que la page est bien autorisée: utilities/utils.php/checkPage
-$askedPage = $_GET['page'];
+$askedPage = htmlspecialchars($_GET['page']);
 //var_dump($askedPage);
-$authorized = checkPage($askedPage);
+$authorized = htmlspecialchars(checkPage($askedPage));
 //var_dump($authorized);
 if ($authorized) {
-    $pageTitle = getPageTitle($askedPage);
+    $pageTitle = htmlspecialchars(getPageTitle($askedPage));
 } else {
     $askedPage = 'erreur';
     $pageTitle = "erreur";
@@ -82,7 +82,7 @@ CHAINE_DE_FIN;
                 if ($askedPage == 'signin') {
                     require("formulaire/signin.php");
                 } else {
-                    require("content/content_$askedPage.php");
+                    require("content/content_".htmlspecialchars($askedPage).".php");
                 }
             }
         }

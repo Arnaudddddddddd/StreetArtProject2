@@ -65,13 +65,13 @@
 </style>
 
 <?php
-$image = $_GET["todo"];
-$id = $_GET["iD"];
+$image = htmlspecialchars($_GET["todo"]);
+$id = htmlspecialchars($_GET["iD"]);
 $resultat = Image::getImageId($dbh, $_GET["iD"]);
-$utilisateur = $resultat->utilisateur;
+$utilisateur = htmlspecialchars($resultat->utilisateur);
 $link = "images/" . $utilisateur . $id . ".jpg";
 if (isset($_GET['delete'])) {
-    $delete = $_GET['delete'];
+    $delete = htmlspecialchars($_GET['delete']);
 } else {
     $delete = false;
 }
@@ -81,7 +81,7 @@ $test = Image::estAUtilisateur($dbh, $_SESSION['login'], $_GET["iD"]);
 //var_dump($nomSansEspace);
 if (!$delete) { //La photo ne peut pas être supprimée
     $largeur = 600;
-    $hauteur = Image::hauteurProportionnelle($resultat, $largeur);
+    $hauteur = htmlspecialchars(Image::hauteurProportionnelle($resultat, $largeur));
     echo <<<CHAINE_DE_FIN
 <div class="fondecran">
     <br>

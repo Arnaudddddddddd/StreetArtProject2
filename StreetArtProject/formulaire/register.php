@@ -79,9 +79,9 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up2"]) && $_POST["up2"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
+    $test = htmlspecialchars(Utilisateur::getUtilisateur($dbh, $_POST['login']));
     if ($test == null && $_POST["up"] == $_POST["up2"]) {
-        $verif = Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['email'], $_POST['naissance']);
+        $verif = htmlspecialchars(Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['email'], $_POST['naissance']));
 
         if ($verif) {
             $form_values_valid = true;
@@ -151,16 +151,16 @@ if (!$form_values_valid) {
                         <fieldset>
                             <legend>Contact</legend>
 
-                            <label for="nom">Nom :</label>
+                            <label for="nom">Nom<em>*</em></label>
                             <input id="nom" class="form-control" type="text" placeholder="Nom" required name="nom"><br><br>
 
-                            <label for="prenom">Prenom :</label>
+                            <label for="prenom">Prenom<em>*</em></label>
                             <input id="prenom" class="form-control" type="text" placeholder="Prenom" required name="prenom" ><br><br>
 
-                            <label for="email">Email :</label>
+                            <label for="email">Email<em>*</em></label>
                             <input id="email" class="form-control" placeholder="Email" type="email" required name="email"><br><br>
 
-                            <label for="naissance">Date de naissance :</label>
+                            <label for="naissance">Date de naissance<em>*</em></label>
                             <input id="naissance" class="form-control" type="date" required name="naissance"><br><br>
                         </fieldset>
 
