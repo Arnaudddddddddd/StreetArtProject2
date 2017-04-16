@@ -75,5 +75,5 @@ echo <<<END
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBBdxZ0rHyuuYMsy0CcuhqpwYKnvKQb8M&callback=initMap">
     </script>
-
+    <div>
 END;
