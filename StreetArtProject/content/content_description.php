@@ -130,3 +130,14 @@ if ($test or $_SESSION['admin'] == true) {
         }
     }
 }
+
+if ($test or $_SESSION['admin'] == true) {
+    if ($delete) {
+        $verif = Image::supprimer($dbh, $_GET["iD"]);
+        if ($verif) {
+            echo "<meta http-equiv='Refresh' content='1; URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
+            unlink($link);
+            unlink('miniatures/mini_' . $image . '.jpg');
+        }
+    }
+}

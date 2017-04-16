@@ -142,12 +142,14 @@ function generateMenuConnexion($askedPage) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand">Street Art Map</a>
+      <a class="navbar-brand">Street Art Project</a>
     </div>
     
     <style>
         .navbar{
             margin-bottom: 0px;
+            margin-left:-3px;
+            margin-right:-3px;
         }
     </style>
 
