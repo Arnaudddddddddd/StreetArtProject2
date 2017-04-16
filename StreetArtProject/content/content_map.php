@@ -35,12 +35,13 @@ echo <<<END
                   parseFloat(markerElem.getAttribute('lat')),
                   parseFloat(markerElem.getAttribute('lng')));
 
-              var infowincontent ='<i class="material-icons" size="50%">party_mode</i>'+'<p></p>'+'<strong style="text-transform:uppercase;">'+name+'     </strong>'+
+              var infowincontent ='<i class="material-icons" size="50%">party_mode</i>'+'<p></p>'+'<strong style="text-transform:uppercase;font-family:Impact;font-size:30px">'+name+'     </strong>'+
                   '<a href="http://localhost/StreetArtProject2/StreetArtProject/index.php?page=description&todo='+name+id+'&iD='+id+'">'+'(Voir)'+'</a>'+
                   '<br>'+'<br>'+'<img src="miniatures/mini_'+ utilisateur + id + '.jpg">';    
               var marker = new google.maps.Marker({
                 map: map,
                 position: point,
+
               });
               marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);

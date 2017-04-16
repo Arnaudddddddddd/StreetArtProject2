@@ -103,7 +103,7 @@ if (!$delete) { //La photo ne peut pas être supprimée
             <div class="col-md-5">
                 <br>
                 <div class="col-md-10 col-md-offset-2 centrage" style="text-align:left">
-                    <h1>$resultat->nom</h1>
+                    <h1 style="font-family:Impact;text-transform:uppercase;">$resultat->nom</h1>
                     <h3><i>Utilisateur: $resultat->utilisateur</i><h3>
                     <h4 style="text-align : justify; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif">
                         $resultat->description
@@ -141,3 +141,4 @@ if ($test or $_SESSION['admin'] == true){
         unlink('miniatures/mini_' . $image . '.jpg');
     }}
 }
+

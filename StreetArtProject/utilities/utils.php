@@ -46,7 +46,7 @@ $page_list = array(
         "unitegallery" => "slider/ug-theme-slider"),
     array("name" => "gallery",
         "title" => "Gallery",
-        "menutitle" => "Gallerie de photos",
+        "menutitle" => "Galerie de photos",
         "unitegallery" => "tiles/ug-theme-tiles"),
     array("name" => "changePassword",
         "title" => "Changer le mot de passe",
@@ -120,6 +120,8 @@ function generateMenuConnexion($askedPage) {
     <style>
         .navbar{
             margin-bottom: 0px;
+            margin-left:-3px;
+            margin-right:-3px;
         }
     </style>
 

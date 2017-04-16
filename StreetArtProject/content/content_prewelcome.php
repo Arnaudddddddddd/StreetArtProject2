@@ -17,27 +17,29 @@
         border-color: transparent;
     }
     .titresite{
-        color: #768766;
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        color: #000000;
+        font-size: 100px;
+        font-family: "Impact", "Book Antiqua", Palatino, serif;
     }
     .cliquezici{
-        color: #768766;
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        color: #000000;
+        font-size: 15px;
+        font-family: "Impact", "Book Antiqua", Palatino, serif;
     }
 </style>
 
 <div class="centre">
     <div class="col-md-12 text-center">
-        <h1 class="titresite">Bienvenue sur notre site</h1> </br>
-        <h3 class="cliquezici">Cliquez ci-dessous</h3>
+        <h1 class="titresite">Street Art Project</h1> </br>
     </div>
 </div>
 
 <nav class="navbar navbar-perso navbar-fixed-bottom">
   <div class="container">
       <div class="col-md-13 text-center">
+          <h3 class="cliquezici">Cliquez ci-dessous</h3>
           <a class="btn" href="index.php?page=welcome" role="button">
-              <img src="images/triangletransp.png" alt="triangle" height="150">
+              <img src="images/triangletransp.png" alt="triangle" height="100">
           </a>
     </div>
   </div>
