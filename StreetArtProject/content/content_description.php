@@ -56,10 +56,17 @@
         text-align: center;
         background-color: white;
         background-image: url("images/fondecranmotif.jpeg");
+        border: 3px black double;
+        border-radius: 10px;
     }
 
     body{
-        background-image: url('images/fondecranmotif.jpeg')
+        background-image: url('images/murdebriques.jpg');
+        background-size: cover;
+    }
+    
+    img{
+        border-radius : 10px;
     }
 </style>
 
@@ -90,12 +97,12 @@ if (!$delete) { //La photo ne peut pas être supprimée
         <div class="row">
             <div class="col-md-5">
                 <br>
-                <img src=$link width=$largeur px height=$hauteur px/>
+                <img style="border-radius: 8 px;" src=$link width=$largeur px height=$hauteur px/>
             </div>
 
             <div class="col-md-5">
                 <br>
-                <div class="col-md-10 col-md-offset-2" style="text-align:left">
+                <div class="col-md-10 col-md-offset-2 centrage" style="text-align:left">
                     <h1>$resultat->nom</h1>
                     <h3><i>Utilisateur: $resultat->utilisateur</i><h3>
                     <h4 style="text-align : justify; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif">

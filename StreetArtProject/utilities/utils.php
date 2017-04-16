@@ -114,7 +114,7 @@ function generateMenuConnexion($askedPage) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Street Art Map</a>
+      <a class="navbar-brand">Street Art Map</a>
     </div>
     
     <style>
@@ -208,7 +208,7 @@ function generateMenuGeneral($adm) {
       </button>
 CHAINE_DE_FIN;
     if($adm){
-      echo '<a class="navbar-brand" href="#">Vous êtes administrateur</a>';
+      echo '<a class="navbar-brand">Vous êtes administrateur</a>';
     }
     echo <<<CHAINE_DE_FIN
     </div>
