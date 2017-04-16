@@ -130,7 +130,6 @@ if ($test or $_SESSION['admin'] == true) {
         }
     }
 }
-
 if ($test or $_SESSION['admin'] == true) {
     if ($delete) {
         $verif = Image::supprimer($dbh, $_GET["iD"]);
