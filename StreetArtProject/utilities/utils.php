@@ -3,34 +3,62 @@
 require_once 'printForms.php';
 
 $white_list = array(
-    "noncaps" => array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"),
-    "caps" => array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
-    "numbers" => array("1","2","3","4","5","6","7","8","9","0"),
-    "specialchars" => array("@","&","$","€")
+    "login" => array(
+        "noncaps" => array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"),
+        "caps" => array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"),
+        "numbers" => array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"),
+        "specialchars" => array("_")
+    ),
+    "motdepasse" => array(
+        "noncaps" => array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"),
+        "caps" => array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"),
+        "numbers" => array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"),
+        "specialchars" => array("@", "&", "$", "€")
+    ),
+    "nom" => array(
+        "noncaps" => array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"),
+        "caps" => array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"),
+        "numbers" => array(),
+        "specialchars" => array(" ", "-")
+    ),
+    "nomphoto" => array(
+        "noncaps" => array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"),
+        "caps" => array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"),
+        "numbers" => array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"),
+        "specialchars" => array(" ","-")
+    ),
+    "nombre" => array(
+        "noncaps" => array(),
+        "caps" => array(),
+        "numbers" => array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"),
+        "specialchars" => array(".")
+    ),
 );
 
-function searchAndFind($letter){
+function searchAndFind($letter, $type) {
     global $white_list;
+    $whity = $white_list[$type];
     $res = false;
-    foreach($white_list["noncaps"] as $nca){
-        $res = ($res or ($letter === $nca));
+    foreach ($whity["noncaps"] as $nca) {
+        $res = ($res or ( $letter === $nca));
     }
-    foreach($white_list["caps"] as $nca){
-        $res = ($res or ($letter === $nca));
+    foreach ($whity["caps"] as $nca) {
+        $res = ($res or ( $letter === $nca));
     }
-    foreach($white_list["numbers"] as $nca){
-        $res = ($res or ($letter === $nca));
+    foreach ($whity["numbers"] as $nca) {
+        $res = ($res or ( $letter === $nca));
     }
-    foreach($white_list["specialchars"] as $nca){
-        $res = ($res or ($letter === $nca));
+    foreach ($whity["specialchars"] as $nca) {
+        $res = ($res or ( $letter === $nca));
     }
     return $res;
 }
 
-function isInWhiteList($word){
+function isInWhiteList($word, $type) {
     $res = true;
-    foreach($word as $letter){
-        $res = ($res and searchAndFind($letter));
+    $arr = str_split($word);
+    foreach ($arr as $letter) {
+        $res = ($res and searchAndFind($letter, $type));
     }
     return $res;
 }
@@ -46,7 +74,7 @@ $page_list = array(
         "unitegallery" => "slider/ug-theme-slider"),
     array("name" => "gallery",
         "title" => "Gallery",
-        "menutitle" => "Gallerie de photos",
+        "menutitle" => "Galerie de photos",
         "unitegallery" => "tiles/ug-theme-tiles"),
     array("name" => "changePassword",
         "title" => "Changer le mot de passe",
@@ -207,8 +235,8 @@ function generateMenuGeneral($adm) {
         <span class="icon-bar"></span>
       </button>
 CHAINE_DE_FIN;
-    if($adm){
-      echo '<a class="navbar-brand">Vous êtes administrateur</a>';
+    if ($adm) {
+        echo '<a class="navbar-brand">Vous êtes administrateur</a>';
     }
     echo <<<CHAINE_DE_FIN
     </div>
