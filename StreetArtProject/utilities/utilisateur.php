@@ -12,10 +12,10 @@ class Utilisateur {
     }
     
     public static function getUtilisateur($dbh,$login){
-    $query = "SELECT * FROM `utilisateurs` WHERE `login`='$login'";
+    $query = "SELECT * FROM `utilisateurs` WHERE `login`=?";
     $sth = $dbh->prepare($query);
     $sth->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
-    $sth->execute();
+    $sth->execute(array($login));
     $user = $sth->fetch();
     $sth->closeCursor();
     if($sth->rowCount()>0){
@@ -41,10 +41,10 @@ class Utilisateur {
     public static function testerMdp($dbh,$login,$mdp){
         $newMdp = SHA1($mdp);
 //        var_dump($newMdp);
-        $query="SELECT * FROM `utilisateurs` WHERE `mdp` ='".$newMdp."'AND `login`='".$login."'";
+        $query="SELECT * FROM `utilisateurs` WHERE `mdp`=? AND `login`=?";
 //        echo $query;
         $sth = $dbh->prepare($query);
-        $request_succeeded = $sth->execute();
+        $request_succeeded = $sth->execute(array($newMdp,$login));
         return $sth->rowCount()>0;
     }
 }

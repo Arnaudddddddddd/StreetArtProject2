@@ -69,17 +69,19 @@
 $change_Password = false;
 
 
-//var_dump($_POST);
+var_dump($_POST);
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up0"]) && $_POST["up0"] != "" &&
-        isset($_POST["up"]) && $_POST["up"] != "" &&
+        isset($_POST["up1"]) && $_POST["up1"] != "" &&
         isset($_POST["up2"]) && $_POST["up2"] != "") {
     $dbh = Database::connect();
     $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
     $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up0"]);
+    var_dump($test);
+    var_dump($test1);
     if ($test != null && $test1 != 0) {
-        $sth = $dbh->prepare("UPDATE `utilisateurs` SET mdp='" . SHA1($_POST['up']) . "' WHERE login = '" . $_POST['login'] . "'");
-        $sth->execute();
+        $sth = $dbh->prepare("UPDATE `utilisateurs` SET mdp=? WHERE login =? ");
+        $sth->execute(array(SHA1($_POST['up1']),$_POST['login']));
         $change_Password = true;
     }
     $dbh = null;
@@ -115,7 +117,7 @@ if (!$change_Password) {
                             <label for="password1">Nouveau mot de passe<em>*</em></label>
                             <input type="password" class="form-control" name="up1" id="password1" placeholder="Nouveau" required><br><br>
                             <label for="password2">Confirmer votre nouveau mot de passe<em>*</em></label>
-                            <input type="password" class="form-control" name="up1" id="password2" placeholder="Confirmer" required><br>
+                            <input type="password" class="form-control" name="up2" id="password2" placeholder="Confirmer" required><br>
                         </fieldset>
                         <p><button type="submit" class="btn btn-default">Valider</button></p>
                     </form>

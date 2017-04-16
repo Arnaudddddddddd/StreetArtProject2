@@ -85,7 +85,7 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
 
         if ($verif) {
             $form_values_valid = true;
-            //echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=signin'>";
+            echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=signin'>";
         }
     }
     // si le traitement réussit, on passe $form_value_valid à true

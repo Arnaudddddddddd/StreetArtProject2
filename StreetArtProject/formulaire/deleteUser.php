@@ -76,8 +76,8 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up"]);
     //var_dump($test1);
     if ($test != null && $test1 != 0) {
-        $sth = $dbh->prepare("DELETE FROM `utilisateurs` WHERE `login`='" . $_POST['login'] . "'");
-        $sth->execute();
+        $sth = $dbh->prepare("DELETE FROM `utilisateurs` WHERE `login`=?");
+        $sth->execute(array($_POST['login']));
         $change_Password = true;
     }
     $dbh = null;
