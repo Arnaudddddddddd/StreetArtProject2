@@ -160,10 +160,10 @@ if (!$form_values_valid) {
                             <p><i>Utilisez le module de droite pour trouver vos coordonnées.</i></p>
 
                             <label for="lat">Latitude</label>
-                            <input type="number" step="0.000000000000000000001" class="form-control" name="lat" id="lat" placeholder="Latitude" required><br><br>
+                            <input type="number" step="any" class="form-control" name="lat" id="lat" placeholder="Latitude" required><br><br>
 
                             <label for="lng">Longitude</label>
-                            <input type="number" step="0.000000000000000000001" class="form-control" name="lng" id="lng" placeholder="Longitude" required><br><br>
+                            <input type="number" step="any" class="form-control" name="lng" id="lng" placeholder="Longitude" required><br><br>
 
                         </fieldset>
 
