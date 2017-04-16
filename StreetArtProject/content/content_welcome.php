@@ -51,23 +51,10 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
         jQuery("#gallery1").unitegallery({
-            /*tile_width: 480,
-            tile_height: 600,
-            gallery_theme: "carousel",
-            gallery_width:"100%", //gallery width
-            gallery_min_width: 160,
-            carousel_pading: 0,
-            carousel_space_between_tiles: 0, //space between tiles
-            carousel_navigation_numtiles: 1,
-            carousel_padding: 3,
-            tile_enable_border: false,
-            lightbox_show_textpanel: false,
-            theme_enable_navigation: false,
-            carousel_autoplay_pause_onhover: false	//pause the autoplay on mouse over*/
-                    gallery_autoplay: false,
-                    gallery_height: 3100,
-                    gallery_width: 6300,
-                    slider_control_zoom: false
+            gallery_autoplay: false,
+            gallery_height: 3100,
+            gallery_width: 6300,
+            slider_control_zoom: false
         });
     });
 </script>

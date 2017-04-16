@@ -6,7 +6,7 @@ function logIn($dbh){
     $test2 = Utilisateur::testerMdp($dbh,$_POST['login'],$_POST['mdp']);}
     if($test1==true && $test2==true){
         $_SESSION['loggedIn']=true;
-        $_SESSION['login'] = $_POST['login'];
+        $_SESSION['login'] = htmlspecialchars($_POST['login']);
         if($_SESSION['login']== 'olivier'){
             $_SESSION['admin']=true;
         }

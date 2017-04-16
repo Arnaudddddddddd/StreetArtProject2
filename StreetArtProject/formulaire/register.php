@@ -79,9 +79,9 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up2"]) && $_POST["up2"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
+    $test = htmlspecialchars(Utilisateur::getUtilisateur($dbh, $_POST['login']));
     if ($test == null && $_POST["up"] == $_POST["up2"]) {
-        $verif = Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['email'], $_POST['naissance']);
+        $verif = htmlspecialchars(Utilisateur::insererUtilisateur($dbh, $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['up'], $_POST['email'], $_POST['naissance']));
 
         if ($verif) {
             $form_values_valid = true;

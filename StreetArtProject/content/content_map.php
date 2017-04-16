@@ -77,5 +77,3 @@ echo <<<END
     </script>
 
 END;
-
-?>

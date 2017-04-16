@@ -72,8 +72,8 @@ $change_Password = false;
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up"]) && $_POST["up"] != "") {
     $dbh = Database::connect();
-    $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
-    $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up"]);
+    $test = htmlspecialchars(Utilisateur::getUtilisateur($dbh, $_POST['login']));
+    $test1 = htmlspecialchars(Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up"]));
     //var_dump($test1);
     if ($test != null && $test1 != 0) {
         $sth = $dbh->prepare("DELETE FROM `utilisateurs` WHERE `login`=?");

@@ -57,10 +57,10 @@
 $connect = false;
 //var_dump($connect);
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
-        isset($_POST["mdp"]) && $_POST["mdp"] != "" ) {
+        isset($_POST["mdp"]) && $_POST["mdp"] != "") {
     $dbh = Database::connect();
-    $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
-    $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["mdp"]);
+    $test = htmlspecialchars(Utilisateur::getUtilisateur($dbh, $_POST['login']));
+    $test1 = htmlspecialchars(Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["mdp"]));
     if ($test != null && $test1) {
         $connect = true;
         echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
@@ -68,7 +68,7 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     $dbh = null;
 }
 if ($connect) {
-        echo <<<CHAINE_DE_FIN
+    echo <<<CHAINE_DE_FIN
 <div class="fondecran">
     <br>
     <div class="container">
@@ -97,14 +97,14 @@ if (!$connect) {
             <div class="centrage">
                 <br>
 CHAINE_DE_FIN;
-    if(!isset($test) && isset($test1)){
+    if (!isset($test) && isset($test1)) {
         echo "<em>Le login que vous avez rentré n'existe pas</em>";
+    } else {
+        if (isset($test1) && !$test1) {
+            echo '<em>Le mot de passe rentré est faux</em>';
+        }
     }
-    else{
-    if(isset($test1) && !$test1){
-                echo '<em>Le mot de passe rentré est faux</em>';
-    }}
-echo <<<CHAINE_DE_FIN
+    echo <<<CHAINE_DE_FIN
     
                     <h2>Formulaire d'identification</h2>
                 <form class="form-inline" action="index.php?page=signin&todo=login" method="post">

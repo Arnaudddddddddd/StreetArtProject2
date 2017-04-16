@@ -67,7 +67,7 @@
 </style>
 
 <?php
-$_POST['utilisateur'] = $_SESSION['login'];
+$_POST['utilisateur'] = htmlspecialchars($_SESSION['login']);
 $form_values_valid = false;
 if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["utilisateur"]) && $_POST["utilisateur"] != "" &&
@@ -75,10 +75,10 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
         isset($_POST["lng"]) && $_POST["lng"] != "") {
     // code de traitement    
     $dbh = Database::connect();
-    $verif = Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['lat'], $_POST['lng'], $_POST['description']);
+    $verif = htmlspecialchars(Image::insererImage($dbh, $_POST['utilisateur'], $_POST['nom'], $_POST['lat'], $_POST['lng'], $_POST['description']));
     $id = $verif;
     if ($verif != 0 && isset($id)) {
-        $_POST['id'] = $id;
+        $_POST['id'] = htmlspecialchars($id);
         $form_values_valid = true; // si le traitement réussit, on passe $form_value_valid à true
         echo <<<CHAINE_DE_FIN
 <div class="fondecran">
@@ -102,12 +102,9 @@ if (isset($_POST["nom"]) && $_POST["nom"] != "" &&
 </div>
 CHAINE_DE_FIN;
         echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=mesImages'>";
-
     }
-
     $dbh = null;
 }
-
 
 if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier']['tmp_name'])) {
 // Le fichier a bien été téléchargé
@@ -117,7 +114,7 @@ if (!empty($_FILES['fichier']['tmp_name']) && is_uploaded_file($_FILES['fichier'
 // JPEG => type=2
     if ($type == 2) {
         if (move_uploaded_file($_FILES['fichier']['tmp_name'], '/Applications/XAMPP/xamppfiles/htdocs/StreetArtProject2/StreetArtProject/images/' . $_POST['utilisateur'] . $_POST['id'] . '.jpg')) {
-            $name = $_POST['utilisateur'] . $_POST['id'];
+            $name = htmlspecialchars($_POST['utilisateur'] . $_POST['id']);
             Image::createMiniature($name);
         } else {
             echo "Echec de la copie";

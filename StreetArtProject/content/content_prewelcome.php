@@ -35,12 +35,12 @@
 </div>
 
 <nav class="navbar navbar-perso navbar-fixed-bottom">
-  <div class="container">
-      <div class="col-md-13 text-center">
-          <h3 class="cliquezici">Cliquez ci-dessous</h3>
-          <a class="btn" href="index.php?page=welcome" role="button">
-              <img src="images/triangletransp.png" alt="triangle" height="100">
-          </a>
+    <div class="container">
+        <div class="col-md-13 text-center">
+            <h3 class="cliquezici">Cliquez ci-dessous</h3>
+            <a class="btn" href="index.php?page=welcome" role="button">
+                <img src="images/triangletransp.png" alt="triangle" height="100">
+            </a>
+        </div>
     </div>
-  </div>
 </nav>

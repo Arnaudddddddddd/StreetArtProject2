@@ -163,28 +163,28 @@ CHAINE_DE_FIN;
 
         if (isset($_SESSION["loggedIn"]) and $_SESSION["loggedIn"]) {
             if ($page['title'] == "Se désinscrire" and $pageTitle == "Se désinscrire") {
-                echo '<li class="active"><a href="index.php?page=deleteUser">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=deleteUser">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Se désinscrire" and $pageTitle != "Se désinscrire") {
-                echo '<li><a href="index.php?page=deleteUser">' . $page['menutitle'] . '</a></li>';
+                echo '<li><a href="index.php?page=deleteUser">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Changer le mot de passe" and $pageTitle == "Changer le mot de passe") {
-                echo '<li class="active"><a href="index.php?page=changePassword">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=changePassword">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Changer le mot de passe" and $pageTitle != "Changer le mot de passe") {
-                echo '<li><a href="index.php?page=changePassword">' . $page['menutitle'] . '</a></li>';
+                echo '<li><a href="index.php?page=changePassword">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Mes images" and $pageTitle == "Mes images") {
-                echo '<li class="active"><a href="index.php?page=mesImages">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=mesImages">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Mes images" and $pageTitle != "Mes images") {
-                echo '<li><a href="index.php?page=mesImages">' . $page['menutitle'] . '</a></li>';
+                echo '<li><a href="index.php?page=mesImages">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Soumettre une image" and $pageTitle == "Soumettre une image") {
-                echo '<li class="active"><a href="index.php?page=submit">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=submit">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Soumettre une image" and $pageTitle != "Soumettre une image") {
-                echo '<li><a href="index.php?page=submit">' . $page['menutitle'] . '</a></li>';
+                echo '<li><a href="index.php?page=submit">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "Se déconnecter") {
                 echo <<<CHAINE_DE_FIN
@@ -199,16 +199,16 @@ CHAINE_DE_FIN;
         }
         if (!isset($_SESSION["loggedIn"]) or ! $_SESSION["loggedIn"]) {
             if ($page['title'] == "S'identifier" and $pageTitle == "S'identifier") {
-                echo '<li class="active"><a href="index.php?page=signin">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=signin">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "S'identifier" and $pageTitle != "S'identifier") {
-                echo '<li><a href="index.php?page=signin">' . $page['menutitle'] . '</a></li>';
+                echo '<li><a href="index.php?page=signin">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "S'inscrire" and $pageTitle == "S'inscrire") {
-                echo '<li class="active"><a href="index.php?page=register">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=register">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] == "S'inscrire" and $pageTitle != "S'inscrire") {
-                echo '<li><a href="index.php?page=register">' . $page['menutitle'] . '</a></li>';
+                echo '<li><a href="index.php?page=register">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
         }
     }
@@ -252,10 +252,10 @@ CHAINE_DE_FIN;
     foreach ($page_list as $page) {
         if ($page['title'] != "Mes images" and $page['title'] != "S'identifier" and $page['title'] != "Se désinscrire" and $page['title'] != "S'inscrire"and $page['title'] != "Changer le mot de passe" and $page['title'] != "Soumettre une image" and $page['title'] != "Se déconnecter" and $page['title'] != "Détail") {
             if ($page['title'] == $pageTitle) {
-                echo '<li class="active"><a href="index.php?page=' . $page['name'] . '">' . $page['menutitle'] . '</a></li>';
+                echo '<li class="active"><a href="index.php?page=' . $page['name'] . '">' . htmlspecialchars($page['menutitle']) . '</a></li>';
             }
             if ($page['title'] != $pageTitle) {
-                echo '<li><a href="index.php?page=' . $page['name'] . '">' . $page["menutitle"] . '</a></li>';
+                echo '<li><a href="index.php?page=' . $page['name'] . '">' . htmlspecialchars($page["menutitle"]) . '</a></li>';
             }
         }
     }
@@ -299,14 +299,14 @@ function getUnitegalleryFromPage($askedPage) {
     $res = "";
     foreach ($page_list as $page) {
         if ($page["name"] == $askedPage) {
-            $res = $page["unitegallery"];
+            $res = htmlspecialchars($page["unitegallery"]);
         }
     }
     return $res;
 }
 
 function generateHTMLHeader($title, $askedPage) {
-    $res = getUnitegalleryFromPage($askedPage);
+    $res = htmlspecialchars(getUnitegalleryFromPage($askedPage));
     echo<<<CHAINE_DE_FIN
 <!DOCTYPE html>
    <html>

@@ -60,8 +60,8 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up1"]) && $_POST["up1"] != "" &&
         isset($_POST["up2"]) && $_POST["up2"] != "") {
     $dbh = Database::connect();
-    $test = Utilisateur::getUtilisateur($dbh, $_POST['login']);
-    $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up0"]);
+    $test = htmlspecialchars(Utilisateur::getUtilisateur($dbh, $_POST['login']));
+    $test1 = htmlspecialchars(Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up0"]));
     if ($test != null && $test1) {
         $sth = $dbh->prepare("UPDATE `utilisateurs` SET mdp=? WHERE login =? ");
         $sth->execute(array(SHA1($_POST['up1']), $_POST['login']));
