@@ -2,56 +2,45 @@
     p {
         margin-top: 0px;
     }
-
     fieldset {
         margin-bottom: 15px;
         padding: 10px;
     }
-
     legend {
         padding: 0px 3px;
         font-weight: bold;
         font-variant: small-caps;
     }
-
     label {
         width: 110px;
         display: inline-block;
         vertical-align: top;
         margin: 6px;
     }
-
     em {
         font-weight: bold;
         font-style: normal;
         color: #f00;
     }
-
     input:focus {
         background: #eaeaea;
     }
-
     input, textarea {
         width: 249px;
     }
-
     textarea {
         height: 100px;
     }
-
     select {
         width: 254px;
     }
-
     input[type=checkbox] {
         width: 10px;
     }
-
     input[type=submit] {
         width: 150px;
         padding: 10px;
     }
-
     .centrage{
         text-align: center;
         background-color: white;
@@ -59,7 +48,6 @@
         border: 3px black double;
         border-radius: 10px;
     }
-
     body{
         background-image: url("images/CollageStreetArt.jpeg");
     }
@@ -67,7 +55,6 @@
 
 <?php
 $change_Password = false;
-
 if (isset($_POST["login"]) && $_POST["login"] != "" &&
         isset($_POST["up0"]) && $_POST["up0"] != "" &&
         isset($_POST["up1"]) && $_POST["up1"] != "" &&
@@ -77,16 +64,14 @@ if (isset($_POST["login"]) && $_POST["login"] != "" &&
     $test1 = Utilisateur::testerMdp($dbh, $_POST["login"], $_POST["up0"]);
     if ($test != null && $test1) {
         $sth = $dbh->prepare("UPDATE `utilisateurs` SET mdp=? WHERE login =? ");
-        $sth->execute(array(SHA1($_POST['up1']),$_POST['login']));
+        $sth->execute(array(SHA1($_POST['up1']), $_POST['login']));
         $change_Password = true;
         echo "<meta http-equiv='Refresh' content='1;URL=http://localhost/StreetArtProject2/StreetArtProject/index.php?page=welcome'>";
-
     }
     $dbh = null;
 }
-
 if ($change_Password == true) {
-        echo <<<CHAINE_DE_FIN
+    echo <<<CHAINE_DE_FIN
 <div class="fondecran">
     <br>
     <div class="container">
@@ -106,10 +91,8 @@ if ($change_Password == true) {
 </div>
 CHAINE_DE_FIN;
 }
-
 if (!$change_Password) {
     echo <<<CHAINE_DE_FIN
-
 <div class="fondecran">
     <br>
     <div class="container">
@@ -121,14 +104,14 @@ if (!$change_Password) {
                 <div class="centrage">
                     <br>
 CHAINE_DE_FIN;
-    if(!isset($test) && isset($test1)){
+    if (!isset($test) && isset($test1)) {
         echo "<em>Le login que vous avez rentré n'existe pas</em>";
+    } else {
+        if (isset($test1) && !$test1) {
+            echo '<em>Le mot de passe rentré est faux</em>';
+        }
     }
-    else{
-    if(isset($test1) && !$test1){
-                echo '<em>Le mot de passe rentré est faux</em>';
-    }}
-echo <<<CHAINE_DE_FIN
+    echo <<<CHAINE_DE_FIN
     
                     <h2>Changer le mot de passe</h2>
                     <form class="form-inline" action="index.php?page=changePassword" method="post"
