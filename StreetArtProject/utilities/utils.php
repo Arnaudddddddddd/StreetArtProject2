@@ -2,6 +2,39 @@
 
 require_once 'printForms.php';
 
+$white_list = array(
+    "noncaps" => array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"),
+    "caps" => array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
+    "numbers" => array("1","2","3","4","5","6","7","8","9","0"),
+    "specialchars" => array("@","&","$","€")
+);
+
+function searchandfind($letter){
+    global $white_list;
+    $res = false;
+    foreach($white_list["noncaps"] as $nca){
+        $res = ($res or ($letter === $nca));
+    }
+    foreach($white_list["caps"] as $nca){
+        $res = ($res or ($letter === $nca));
+    }
+    foreach($white_list["numbers"] as $nca){
+        $res = ($res or ($letter === $nca));
+    }
+    foreach($white_list["specialchars"] as $nca){
+        $res = ($res or ($letter === $nca));
+    }
+    return $res;
+}
+
+function isInWhiteList($word){
+    $res = true;
+    foreach($word as $letter){
+        $res = ($res and searchandfind($letter));
+    }
+    return $res;
+}
+
 $page_list = array(
     array("name" => "welcome",
         "title" => "Accueil de notre site",
