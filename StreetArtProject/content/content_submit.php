@@ -145,12 +145,12 @@ if (!$form_values_valid) {
                             <legend>Votre photo</legend>
 
                             <label for="nom">Nom de la photo</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nom" name="nom" required><br><br>
+                            <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" required><br><br>
 
                             <label for="description">Description</label>
-                            <textarea type="text" class="form-control" name="description" id="description" placeholder="Décrivez votre photo" rows=10 COLS=50></textarea><br><br>
+                            <textarea class="form-control" name="description" id="description" placeholder="Décrivez votre photo" rows=10 COLS=50></textarea><br><br>
 
-                            <label for="photo">Votre photo</label>
+                            <label for="fichier">Votre photo</label>
                             <input type="hidden" class="form-control" name="MAX_FILE_SIZE" value="104857600" />
                             <input type="file" class="form-control" name="fichier"/><br>
                             <strong>Taille du fichier limitée à 1 Go</strong><br><br>
@@ -163,10 +163,10 @@ if (!$form_values_valid) {
                             <p><i>Utilisez le module de droite pour trouver vos coordonnées.</i></p>
 
                             <label for="lat">Latitude</label>
-                            <input type="float" class="form-control" name="lat" id="lat" placeholder="Latitude" required><br><br>
+                            <input type="number" step="0.000000000000000000001" class="form-control" name="lat" id="lat" placeholder="Latitude" required><br><br>
 
                             <label for="lng">Longitude</label>
-                            <input type="float" class="form-control" name="lng" id="lng" placeholder="Longitude" required><br><br>
+                            <input type="number" step="0.000000000000000000001" class="form-control" name="lng" id="lng" placeholder="Longitude" required><br><br>
 
                         </fieldset>
 

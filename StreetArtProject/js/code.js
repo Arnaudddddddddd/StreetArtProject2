@@ -1,20 +1,3 @@
-
-
-//$(document).ready(function(){
-//    $("#TexteAAfficher").hide();
-//    $("#ZoneDeClic").attr("statut","1");
-//    $("#ZoneDeClic").html("Voir la solution");
-//    $("#ZoneDeClic").click(function(){
-//        $("#TexteAAfficher").slideToggle("slow");
-//        if($("#ZoneDeClic").attr("statut"=="1")){
-//            $("#ZoneDeClic").html("Cacher la solution").attr("statut",0);
-//        }
-//        else{
-//            $("#ZoneDeClic").html("Voir la solution").attr("statut",1);
-//        }
-//    });
-//});
-
 $(document).ready(function(){
     
     $("div.zoneTexteAfficherMasquer").each(function(i) {

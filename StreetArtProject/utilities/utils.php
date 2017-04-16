@@ -241,7 +241,7 @@ CHAINE_DE_FIN;
         echo '<a class="navbar-brand">Vous êtes administrateur</a>';
     }
     echo <<<CHAINE_DE_FIN
-    </div>
+    </div></div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -317,7 +317,6 @@ function generateHTMLHeader($title, $askedPage) {
         <meta name="keywords" content="Mots clefs relatifs à cette page"/>
         <meta name="description" content="Descriptif court"/>
         
-        <script type="text/javascript" src="js/code.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/perso.js"></script>
@@ -331,7 +330,6 @@ function generateHTMLHeader($title, $askedPage) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">     
         
         <!-- CSS Bootstrap -->
-        <link href="css/perso.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap.css" rel="stylesheet">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -350,8 +348,6 @@ function generateHTMLHeader($title, $askedPage) {
         }
         </style>
             
-        <!-- CSS Perso -->
-        <link rel="stylesheet" type="text/css" href=css/perso.css/>
         
         <!-- Include Unite Gallery core files -->
 	<script src='unitegallery/js/unitegallery.min.js' type='text/javascript'  ></script>
