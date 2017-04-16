@@ -153,7 +153,7 @@ if (!$form_values_valid) {
                             <label for="photo">Votre photo</label>
                             <input type="hidden" class="form-control" name="MAX_FILE_SIZE" value="104857600" />
                             <input type="file" class="form-control" name="fichier"/><br>
-                            <strong>Taille du fichier limitée à 1 Go</strong><br><br>
+                            <strong>Taille du fichier limitée à 10 Mo</strong><br><br>
 
                         </fieldset>
 

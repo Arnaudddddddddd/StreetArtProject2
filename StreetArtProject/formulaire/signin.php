@@ -111,9 +111,9 @@ echo <<<CHAINE_DE_FIN
                     <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p><br>
                     <fieldset>
                         <legend>Identifiez-vous</legend>
-                        <label for="login">Login</label>
+                        <label for="login">Login<em>*</em></label>
                         <input type="text" class="form-control" id="login" placeholder="Login" name="login" required><br>
-                        <label for="mdp">Password</label>
+                        <label for="mdp">Password<em>*</em></label>
                         <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Mot de passe" required><br>
                     </fieldset>
                     <p><button type="submit" class="btn btn-default">Sign in</button></p>
