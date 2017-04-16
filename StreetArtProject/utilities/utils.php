@@ -144,14 +144,6 @@ function generateMenuConnexion($askedPage) {
       </button>
       <a class="navbar-brand">Street Art Project</a>
     </div>
-    
-    <style>
-        .navbar{
-            margin-bottom: 0px;
-            margin-left:-3px;
-            margin-right:-3px;
-        }
-    </style>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -216,7 +208,7 @@ CHAINE_DE_FIN;
 
 
     echo <<<CHAINE_DE_FIN
-
+        </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -241,10 +233,10 @@ CHAINE_DE_FIN;
         echo '<a class="navbar-brand">Vous êtes administrateur</a>';
     }
     echo <<<CHAINE_DE_FIN
-    </div></div>
+    </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
 CHAINE_DE_FIN;
     global $pageTitle;
@@ -263,33 +255,6 @@ CHAINE_DE_FIN;
         </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
-CHAINE_DE_FIN;
-}
-
-function generateMenuFooter() {
-    echo <<<CHAINE_DE_FIN
-<nav class="navbar navbar-default navbar-bottom">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="col-md-3"><a href="#">Lien 1</a></li>
-                <li class="col-md-3"><a href="#">Lien 2</a></li>
-                <li class="col-md-3"><a href="#">Lien 3</a></li>
-                <li class="col-md-3"><a href="#">Lien 4</a></li>
-            </ul>
-        </div>
 </nav>
 CHAINE_DE_FIN;
 }
@@ -376,6 +341,15 @@ function generateHTMLHeader($title, $askedPage) {
                 }
             }
         </script-->
+        
+        <style>
+            .navbar{
+                margin-bottom: 0px;
+                margin-left:-3px;
+                margin-right:-3px;
+            }
+        </style>
+            
     </head>
     <body>
 CHAINE_DE_FIN;

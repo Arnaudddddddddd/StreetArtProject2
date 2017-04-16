@@ -18,7 +18,7 @@ $utilisateur = htmlspecialchars($_SESSION['login']);
 global $pageTitle;
 if ($pageTitle == "Mes images") {
     if ($_SESSION['admin'] == false) {
-        $resultat = htmlspecialchars(Image::getImageUtilisateur2($dbh, $utilisateur));
+        $resultat = Image::getImageUtilisateur2($dbh, $utilisateur);
         //var_dump($resultat);
         if ($resultat!=null) {
             //var_dump($resultat);
