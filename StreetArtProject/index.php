@@ -1,4 +1,5 @@
 <?php
+
 session_name("SessionTest");
 // ne pas mettre d'espace dans le nom de session !
 session_start();
@@ -41,7 +42,9 @@ if (!isset($_GET['page'])) {
 
 //Verification que la page est bien autorisée: utilities/utils.php/checkPage
 $askedPage = $_GET['page'];
+//var_dump($askedPage);
 $authorized = checkPage($askedPage);
+//var_dump($authorized);
 if ($authorized) {
     $pageTitle = getPageTitle($askedPage);
 } else {
@@ -58,11 +61,11 @@ if ($prewlcm) {
     if (isset($_SESSION['admin']) and $_SESSION['admin'] == true) {
         $adm = true;
     }
-    
+
     //Génération des menus
     generateMenuConnexion($askedPage);
     generateMenuGeneral($adm);
-    
+
     echo<<<CHAINE_DE_FIN
             <div id="content">
 CHAINE_DE_FIN;
@@ -76,7 +79,11 @@ CHAINE_DE_FIN;
             if ($askedPage == 'register') {
                 require("formulaire/register.php");
             } else {
-                require("content/content_$askedPage.php");
+                if ($askedPage == 'signin') {
+                    require("formulaire/signin.php");
+                } else {
+                    require("content/content_$askedPage.php");
+                }
             }
         }
     }

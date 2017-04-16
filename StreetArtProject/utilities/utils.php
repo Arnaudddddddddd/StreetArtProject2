@@ -9,7 +9,7 @@ $white_list = array(
     "specialchars" => array("@","&","$","€")
 );
 
-function searchandfind($letter){
+function searchAndFind($letter){
     global $white_list;
     $res = false;
     foreach($white_list["noncaps"] as $nca){
@@ -30,7 +30,7 @@ function searchandfind($letter){
 function isInWhiteList($word){
     $res = true;
     foreach($word as $letter){
-        $res = ($res and searchandfind($letter));
+        $res = ($res and searchAndFind($letter));
     }
     return $res;
 }
@@ -44,8 +44,8 @@ $page_list = array(
         "title" => "Carte",
         "menutitle" => "La carte",
         "unitegallery" => "slider/ug-theme-slider"),
-    array("name" => "contacts",
-        "title" => "Qui sommes-nous ?",
+    array("name" => "gallery",
+        "title" => "Street Art",
         "menutitle" => "Nous contacter",
         "unitegallery" => "slider/ug-theme-slider"),
     array("name" => "changePassword",
@@ -295,7 +295,7 @@ function generateHTMLHeader($title, $askedPage) {
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ5Dt9EU5yi6HzVkzsRU-W3RHbZDUKJCA&signed_in=true&callback=initMap">
         </script>
         
-        <title>$title</title>
+        <title>Street Art Project</title>
         
         <!-- Google Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">     
