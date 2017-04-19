@@ -51,10 +51,12 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
         jQuery("#gallery1").unitegallery({
-            gallery_autoplay: false,
+            gallery_autoplay: true,
             gallery_height: 3100,
             gallery_width: 6300,
-            slider_control_zoom: false
+            slider_control_zoom: false,
+            gallery_play_interval: 3000,
+            gallery_pause_on_mouseover: false
         });
     });
 </script>
