@@ -73,7 +73,8 @@ echo <<<END
       function doNothing() {}
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBBdxZ0rHyuuYMsy0CcuhqpwYKnvKQb8M&callback=initMap">
-    </script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBBdxZ0rHyuuYMsy0CcuhqpwYKnvKQb8M&callback=initMap">
+        </script>
+        
     <div>
 END;

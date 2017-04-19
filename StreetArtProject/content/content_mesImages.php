@@ -77,7 +77,7 @@ CHAINE_DE_FIN;
         }
     }
     if ($_SESSION['admin'] == true) {
-        $resultat = htmlspecialchars(Image::getAllImages2($dbh));
+        $resultat = Image::getAllImages2($dbh);
         //var_dump($resultat);
         echo '<div id="gallery1" style="margin:0px auto; display:none;">';
         foreach ($resultat as $res_aux) {
