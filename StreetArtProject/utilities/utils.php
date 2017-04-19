@@ -286,9 +286,8 @@ function generateHTMLHeader($title, $askedPage) {
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/perso.js"></script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBBdxZ0rHyuuYMsy0CcuhqpwYKnvKQb8M&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAzKmrFBUo0pQEyI85SG42W2XujlC_XBE&signed_in=true&callback=initMap">
         </script>
-        
         <title>Street Art Project</title>
         
         <!-- Google Icons -->
